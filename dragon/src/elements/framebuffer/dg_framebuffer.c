@@ -9,7 +9,6 @@
 #include <SFML/Graphics.h>
 #include "dg_framebuffer.h"
 
-//intitialize the framebuffer
 dg_framebuffer_t *dg_framebuffer_create(unsigned int width,
     unsigned int height) {
     dg_framebuffer_t *fb = malloc(sizeof(dg_framebuffer_t));
@@ -26,7 +25,6 @@ dg_framebuffer_t *dg_framebuffer_create(unsigned int width,
     return fb;
 }
 
-//free the framebuffer
 int dg_framebuffer_destroy(dg_framebuffer_t *fb)
 {
     free(fb->pixels);
@@ -36,11 +34,10 @@ int dg_framebuffer_destroy(dg_framebuffer_t *fb)
     return 0;
 }
 
-//update the framebuffer
 void dg_framebuffer_update(dg_framebuffer_t *fb, sfRenderWindow *window)
 {
     sfTexture_updateFromPixels((sfTexture *) sfSprite_getTexture(fb->sp),
-                               fb->pixels, fb->width, fb->height, 0, 0);
+        fb->pixels, fb->width, fb->height, 0, 0);
     sfRenderWindow_drawSprite(window, fb->sp, NULL);
 }
 

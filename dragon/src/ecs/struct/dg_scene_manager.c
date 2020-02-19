@@ -69,7 +69,7 @@ int dg_scene_manager_get_scene_id(char *name)
     int id = -1;
 
     for (int i = 0; sm->scenes[i]; i++)
-         if (!dg_strcmp(name, sm->scenes[i]->name))
+        if (!dg_strcmp(name, sm->scenes[i]->name))
             id = i;
     return id;
 }

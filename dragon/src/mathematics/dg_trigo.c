@@ -12,11 +12,11 @@ const int PRECISION = 10;
 
 double dg_get_radian(double angle)
 {
-	while (angle > PI)
-		angle -= 2 * PI;
-	while (angle < -PI)
-		angle += 2 * PI;
-	return angle;
+    while (angle > PI)
+        angle -= 2 * PI;
+    while (angle < -PI)
+        angle += 2 * PI;
+    return angle;
 }
 
 double dg_cos(double x)

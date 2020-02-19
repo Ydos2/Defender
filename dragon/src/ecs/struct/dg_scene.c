@@ -53,9 +53,9 @@ static void dg_scene_launch_system(dg_scene_t *scene, dg_system_t *sys,
         dt.microseconds = 0;
     for (tmp = scene->entities; tmp; tmp = tmp->next) {
         if (scene->run && !sys->is_render)
-            sys->system(tmp->data, w, &(scene->entities),dt);
+            sys->system(tmp->data, w, &(scene->entities), dt);
         else if (scene->display && sys->is_render)
-            sys->system(tmp->data, w, &(scene->entities),dt);
+            sys->system(tmp->data, w, &(scene->entities), dt);
     }
 }
 

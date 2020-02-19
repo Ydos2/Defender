@@ -9,7 +9,7 @@
 #include "dg_math.h"
 
 static int indg_check_spe(dg_framebuffer_t *fb, sfVector2u p1,
-                     sfVector2u p2, sfColor color)
+    sfVector2u p2, sfColor color)
 {
     unsigned int nb = dg_abs(p1.x - p2.x) + dg_abs(p1.y - p2.y);
 
