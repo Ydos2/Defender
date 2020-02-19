@@ -81,13 +81,16 @@ NAME	= libdragon.a
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	ar rc $(NAME) $(OBJ)
-	cp -r include/ ../
-	mv $(NAME) ../
+	@ar rc $(NAME) $(OBJ)
+	@cp -r include/ ../
+	@mv $(NAME) ../
 
 clean:
-	-rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
-	-rm -f ../$(NAME)
-	-rm -f $(INC)
+	@rm -f ../$(NAME)
+	@rm -f $(INC)
+	@printf "[\e[1;31m-RM-\e[0m] % 42s\n" $(NAME) | tr ' ' '.'
+	@printf "[\e[1;31m-RM-\e[0m] % 42s\n" $(INC) | tr ' ' '.'
+	@printf "\e[1;3;5;32m▀▄▀▄▀▄ Finished RM ▄▀▄▀▄▀\e[0m\n"

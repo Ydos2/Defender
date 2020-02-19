@@ -9,6 +9,7 @@
 #define LIBDRAGON_H_
 
 #include <SFML/Graphics.h>
+#include <SFML/Audio.h>
 #include "dg_array.h"
 #include "dg_framebuffer.h"
 #include "dg_window.h"
