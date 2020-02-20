@@ -59,13 +59,13 @@ dg_scene_t *scene_escape_menu(void)
     dg_scene_t *scene = dg_scene_create("escape_menu");
 
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){800, 400}, "Resume", &go_to_resume));
+        ((sfVector2f){800, 400}, 1, "Resume", &go_to_resume));
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){800, 500}, "Reload", &go_to_reload));
+        ((sfVector2f){800, 500}, 1, "Reload", &go_to_reload));
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){800, 600}, "Quit to menu", &go_to_menu));
+        ((sfVector2f){800, 600}, 1, "Quit to menu", &go_to_menu));
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){800, 700}, "Quit Game", &go_to_quit));
+        ((sfVector2f){800, 700}, 1, "Quit Game", &go_to_quit));
     dg_scene_add_ent(scene, ent_sprite(3, 2.75, 150, -50));
     dg_scene_add_ent(scene, ent_text(700, 175, 200, "MY DEFENDER"));
     dg_scene_add_ent(scene, dg_ent_camera(0, 0));
