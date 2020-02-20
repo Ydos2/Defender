@@ -9,22 +9,7 @@
 #include "dg_component.h"
 #include "ecs.h"
 
-static void component_destroy(void *data)
-{
-
-}
-
-dg_component_t *dg_cpt_spritesheet(int id)
-{
-    dg_cpt_destroy_t destroy = &component_destroy;
-    dg_spritesheet_t *sheet = dg_ressources_get_spritesheet(id);
-    dg_component_t *component = dg_component_create("spritesheet",
-        sheet, destroy);
-
-    return component;
-}
-
-void dg_sys_render(dg_entity_t *entity, dg_window_t *w,
+void sys_render(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt)
 {
     dg_entity_t *camera = dg_get_entity(*entities, "camera");

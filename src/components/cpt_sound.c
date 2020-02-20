@@ -9,6 +9,14 @@
 #include <stdlib.h>
 #include "ecs.h"
 
+void sound_play(sfMusic *sound)
+{
+    sfTime time = {0};
+
+    sfMusic_setPlayingOffset(sound, time);
+    sfMusic_play(sound);
+}
+
 static void cpt_sound_destroy(void *data)
 {
     sfMusic *sound = (sfMusic *)(data);
@@ -16,7 +24,7 @@ static void cpt_sound_destroy(void *data)
     sfMusic_destroy(sound);
 }
 
-dg_component_t *cpt_sound_create(char *path)
+dg_component_t *cpt_sound(char *path)
 {
     void (*destroy)(void *) = &cpt_sound_destroy;
     sfMusic *sound = sfMusic_createFromFile(path);
@@ -24,12 +32,4 @@ dg_component_t *cpt_sound_create(char *path)
     dg_component_t *component = dg_component_create("sound", sound, destroy);
     sound_play(sound);
     return component;
-}
-
-void sound_play(sfMusic *sound)
-{
-    sfTime time = {0};
-
-    sfMusic_setPlayingOffset(sound, time);
-    sfMusic_play(sound);
 }

@@ -7,19 +7,32 @@
 
 CC	=	gcc
 
-SRC	=	src/main.c								\
-		src/scene_menu.c						\
-		src/sprite_sheet/background_menu.c		\
-		src/sprite_sheet/dg_cpt_spritesheet.c	\
-		src/text/cpt_text.c						\
-		src/text/text_menu.c					\
-		src/button/cpt_button.c					\
-		src/cpt_scale.c							\
-		src/cpt_action.c						\
-		src/button/sys_button.c					\
-		src/sprite_sheet/cpt_box_collider.c		\
-		src/sound/cpt_sound.c					\
-		src/sound/ent_music.c					\
+SRC_OTH = 	src/main.c							\
+
+SRC_SCN =	src/scenes/scene_main_menu.c		\
+			src/scenes/scene_game.c				\
+
+SRC_CPT =	src/components/cpt_action.c			\
+			src/components/cpt_text.c			\
+			src/components/cpt_scale.c			\
+			src/components/cpt_box_collider.c	\
+			src/components/cpt_spritesheet.c	\
+			src/components/cpt_sound.c			\
+
+SRC_ENT =	src/entities/ent_music.c			\
+			src/entities/ent_sprite.c			\
+			src/entities/ent_text.c				\
+			src/entities/ent_button.c			\
+
+SRC_SYS =	src/systems/sys_render.c			\
+			src/systems/sys_display_text.c		\
+			src/systems/sys_button.c			\
+
+SRC	=	$(SRC_OTH)	\
+		$(SRC_SCN)	\
+		$(SRC_CPT)	\
+		$(SRC_ENT)	\
+		$(SRC_SYS)	\
 
 NAME	=	my_defender
 

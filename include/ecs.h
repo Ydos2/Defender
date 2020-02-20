@@ -10,52 +10,35 @@
 
 #include "libdragon.h"
 
-// background_menu.c
-dg_entity_t *ent_sprite_create(int id);
+//scenes
+dg_scene_t *scene_game(void);
+dg_scene_t *scene_main_menu(void);
 
-// text_menu.c
-dg_entity_t *entity_text_create(void);
-
-// cpt_button.c
+//entities
+dg_entity_t *ent_music(char *path);
+dg_entity_t *ent_sprite(int id);
+dg_entity_t *ent_text(int x, int y, int scale, char *text);
 dg_entity_t *ent_button(sfVector2f pos, char *text
     , void (*action)(dg_window_t *));
 
-// cpt_button.c
+//components
+dg_component_t *cpt_action(void (*action)(dg_window_t *));
+dg_component_t *cpt_text(int scale, char *content);
 dg_component_t *cpt_scale(float x, float y);
-
-// cpt_box_collider.c
 dg_component_t *cpt_box_collider(float left, float top
     , float height, float width);
+dg_component_t *cpt_spritesheet(int id);
+dg_component_t *cpt_sound(char *path);
 
-// cpt_action.c
-dg_component_t *component_action_create(void (*action)(dg_window_t *));
-
-void system_player_control(dg_entity_t *, dg_window_t *, dg_array_t **, sfTime);
-
-// scenes
-dg_scene_t *scene_game(void);
-dg_scene_t *scene_map_1(void);
-
-// dg_cpt_spritesheet.c
-dg_component_t *dg_cpt_spritesheet(int id);
-void dg_sys_render(dg_entity_t *entity, dg_window_t *w,
+//systems
+void sys_render(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
-
-// cpt_text.c
-dg_component_t *component_text_create(int scale,
-    char *content);
-void system_display_text(dg_entity_t *entity, dg_window_t *w,
+void sys_display_text(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
-
-// sys_button.c
 void sys_button(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 
-// cpt_sound.c
-dg_component_t *cpt_sound_create(char *path);
+// utilities
 void sound_play(sfMusic *sound);
-
-// ent_music.c
-dg_entity_t *ent_music(char *path);
 
 #endif

@@ -17,9 +17,8 @@ dg_entity_t *ent_button(sfVector2f pos, char *text
     dg_entity_add_component(button, dg_cpt_pos(pos.x, pos.y));
     dg_entity_add_component(button, cpt_scale(0.2, 0.2));
     dg_entity_add_component(button, cpt_box_collider(0, 0, 60, 225));
-    dg_entity_add_component(button, component_action_create(action));
-    dg_entity_add_component(button
-        , component_text_create(200, text));
-    dg_entity_add_component(button, dg_cpt_spritesheet(1));
+    dg_entity_add_component(button, cpt_action(action));
+    dg_entity_add_component(button, cpt_text(200, text));
+    dg_entity_add_component(button, cpt_spritesheet(1));
     return button;
 }

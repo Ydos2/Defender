@@ -19,6 +19,8 @@ void dg_scene_manager_create(void);
 
 void dg_scene_manager_add_scene(dg_scene_t *);
 
+void dg_scene_manager_remove(char *);
+
 dg_scene_manager_t *dg_scene_manager(void);
 
 void dg_scene_manager_destroy(void);
