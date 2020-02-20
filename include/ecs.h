@@ -23,7 +23,7 @@ dg_entity_t *ent_button(sfVector2f pos, char *text
 
 //components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
-dg_component_t *cpt_text(int scale, char *content);
+dg_component_t *cpt_text(sfVector2f pos, int scale, char *content);
 dg_component_t *cpt_scale(float x, float y);
 dg_component_t *cpt_box_collider(float left, float top
     , float height, float width);

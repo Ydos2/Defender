@@ -9,6 +9,16 @@
 #include "dg_component.h"
 #include "ecs.h"
 
+static void set_text_offset(dg_window_t *w, sfVector2f pos, sfText *text)
+{
+    sfVector2f text_pos = sfText_getPosition(text);
+    sfVector2f new_pos = {pos.x + text_pos.x, pos.y + text_pos.y};
+
+    sfText_setPosition(text, new_pos);
+    sfRenderWindow_drawText(w->window, text, 0);
+    sfText_setPosition(text, text_pos);
+}
+
 void sys_display_text(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt)
 {
@@ -20,8 +30,7 @@ void sys_display_text(dg_entity_t *entity, dg_window_t *w,
 
     if (!dg_system_require(entity, 2, "text", "pos"))
         return;
-    sfText_setPosition(text, *pos);
     if (scale)
         sfText_setCharacterSize(text, scale->x * 275);
-    sfRenderWindow_drawText(w->window, text, 0);
+    set_text_offset(w, *pos, text);
 }

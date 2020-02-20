@@ -17,12 +17,13 @@ static void component_destroy(void *data)
     sfText_destroy(text);
 }
 
-dg_component_t *cpt_text(int scale, char *content)
+dg_component_t *cpt_text(sfVector2f pos, int scale, char *content)
 {
     void (*destroy)(void *) = &component_destroy;
     sfText *text = sfText_create();
     dg_component_t *component = dg_component_create("text", text, destroy);
 
+    sfText_setPosition(text, pos);
     sfText_setFont (text, sfFont_createFromFile("./font/Krisha-Regular.otf"));
     sfText_setCharacterSize(text, scale);
     sfText_setString(text, content);
