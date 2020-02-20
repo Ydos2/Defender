@@ -9,7 +9,7 @@
 #include "dg_component.h"
 #include "ecs.h"
 
-dg_entity_t *ent_button(sfVector2f pos, char *text
+dg_entity_t *ent_button(sfVector2f pos, int size, char *text
     , void (*action)(dg_window_t *))
 {
     dg_entity_t *button = dg_entity_create("button");
