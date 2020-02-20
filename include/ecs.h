@@ -18,7 +18,7 @@ dg_scene_t *scene_main_menu(void);
 dg_entity_t *ent_music(char *path);
 dg_entity_t *ent_sprite(int id);
 dg_entity_t *ent_text(int x, int y, int scale, char *text);
-dg_entity_t *ent_button(sfVector2f pos, char *text
+dg_entity_t *ent_button(sfVector2f pos, int size, char *text
     , void (*action)(dg_window_t *));
 
 //components
