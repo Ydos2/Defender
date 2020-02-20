@@ -11,6 +11,7 @@ SRC_OTH = 	src/main.c							\
 
 SRC_SCN =	src/scenes/scene_main_menu.c		\
 			src/scenes/scene_game.c				\
+			src/scenes/scene_escape_menu.c		\
 
 SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_text.c			\
@@ -27,6 +28,7 @@ SRC_ENT =	src/entities/ent_music.c			\
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
 			src/systems/sys_button.c			\
+			src/systems/sys_escape.c			\
 
 SRC	=	$(SRC_OTH)	\
 		$(SRC_SCN)	\

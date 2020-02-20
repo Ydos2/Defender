@@ -13,10 +13,11 @@
 //scenes
 dg_scene_t *scene_game(void);
 dg_scene_t *scene_main_menu(void);
+dg_scene_t *scene_escape_menu(void);
 
 //entities
 dg_entity_t *ent_music(char *path);
-dg_entity_t *ent_sprite(int id);
+dg_entity_t *ent_sprite(int id, float scale, float x, float y);
 dg_entity_t *ent_text(int x, int y, int scale, char *text);
 dg_entity_t *ent_button(sfVector2f pos, char *text
     , void (*action)(dg_window_t *));
@@ -36,6 +37,8 @@ void sys_render(dg_entity_t *entity, dg_window_t *w,
 void sys_display_text(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_button(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void sys_escape(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 
 // utilities
