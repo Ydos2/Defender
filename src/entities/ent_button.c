@@ -9,21 +9,34 @@
 #include "libdragon.h"
 #include "ecs.h"
 
+static sfFloatRect set_text(dg_entity_t *entity, dg_component_t *ctext,
+ char *content, int size)
+{
+    sfText *text = (sfText *)(ctext->data);
+    sfFloatRect rect = {0};
+
+    sfText_setCharacterSize(text, size);
+    rect = sfText_getGlobalBounds(text);
+    sfText_setPosition(text, (sfVector2f){rect.width * 0.6 - rect.left,
+        rect.height * 0.2 - rect.top});
+    dg_entity_add_component(entity, ctext);
+    return rect;
+}
+
 static void set_button_scale(dg_entity_t *button, int size, char *text,
     dg_spritesheet_t *img)
 {
     int tlen = 0;
-    float img_relative_pixel = 1.0 / img->x;
-    float img_y = 1.0 / img->y;
-    float new_img_size = 0;
-    int text_centered_pos = 0;
+    float img_rx = 1.0 / img->x;
+    float img_ry = 1.0 / img->y;
+    dg_component_t *ctext = cpt_text((sfVector2f){0, 0}, size, text);
+    sfFloatRect text_size = set_text(button, ctext, text, size);
+    float img_x_size = img_rx * (text_size.width * 2.2);
+    float img_y_size = img_ry * (text_size.height * 1.4);
 
-    for (tlen = 0; text && text[tlen] != '\n' && text[tlen] != '\0'; tlen++);
-    new_img_size = (tlen + 2) * img_relative_pixel * size;
-    text_centered_pos = ((new_img_size * img->x) / 2) - (size * 0.65 * (tlen / 2));
-    dg_entity_add_component(button, cpt_scale(new_img_size, img_y * size * 3.3));
-    dg_entity_add_component(button, cpt_text((sfVector2f){text_centered_pos, 0}, 470, text));
-    dg_entity_add_component(button, cpt_box_collider(0, 0, size * 3.3, new_img_size * img->x));
+    dg_entity_add_component(button, cpt_scale(img_x_size, img_y_size));
+    dg_entity_add_component(button, cpt_box_collider(0, 0,
+        img_y_size * img->y, img_x_size * img->x));
 }
 
 dg_entity_t *ent_button(sfVector2f pos, int size, char *text
