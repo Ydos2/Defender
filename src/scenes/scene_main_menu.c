@@ -18,6 +18,7 @@ static void go_to_map(dg_window_t *w)
 
     sfMusic_stop(music_music);
     dg_scene_manager_add_scene(scene_game());
+    dg_scene_manager_add_scene(scene_escape_menu());
     new_scene = dg_scene_manager_get_scene("game");
     old_scene->run = 0;
     old_scene->display = 0;
@@ -39,7 +40,7 @@ dg_scene_t *scene_main_menu(void)
     dg_scene_add_ent(scene, ent_button
         ((sfVector2f){800, 700}, 20, "Quit", &go_to_quit));
     dg_scene_add_ent(scene, ent_music("./sound/menu_song.ogg"));
-    dg_scene_add_ent(scene, ent_sprite(0));
+    dg_scene_add_ent(scene, ent_sprite(0, 1, 0, 0));
     dg_scene_add_ent(scene, ent_text(800, 200, 200, "Menu"));
     dg_scene_add_ent(scene, dg_ent_camera(0, 0));
     dg_scene_add_sys(scene, dg_system_create(&sys_display_text, 1));
