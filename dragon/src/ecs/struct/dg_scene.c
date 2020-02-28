@@ -20,6 +20,7 @@ dg_scene_t *dg_scene_create(char *name)
     scene->systems = 0;
     scene->run = 0;
     scene->display = 0;
+    scene->destroy = 0;
     return scene;
 }
 
@@ -51,7 +52,7 @@ static void dg_scene_launch_system(dg_scene_t *scene, dg_system_t *sys,
 
     if (!scene->run)
         dt.microseconds = 0;
-    for (tmp = scene->entities; tmp; tmp = tmp->next) {
+    for (tmp = scene->entities; scene && tmp; tmp = tmp->next) {
         if (scene->run && !sys->is_render)
             sys->system(tmp->data, w, &(scene->entities), dt);
         else if (scene->display && sys->is_render)
@@ -67,7 +68,9 @@ void dg_scene_update(dg_scene_t *scene, dg_window_t *w, sfTime dt)
 
     if (!scene)
         return;
-    for (sys = scene->systems; sys; sys = sys->next) {
+    for (sys = scene->systems; scene && sys; sys = sys->next) {
         dg_scene_launch_system(scene, ((dg_system_t *)(sys->data)), w, dt);
     }
+    if (scene->destroy)
+        dg_scene_destroy(scene);
 }

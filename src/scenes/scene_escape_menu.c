@@ -25,22 +25,9 @@ static void go_to_resume(dg_window_t *w)
 
 static void go_to_menu(dg_window_t *w)
 {
-    dg_scene_t *old_scene = dg_scene_manager_get_scene("escape_menu");
-    dg_scene_t *new_scene = dg_scene_manager_get_scene("main_menu");
-    dg_scene_t *scene = dg_scene_manager_get_scene("game");
-    dg_entity_t *music_ent = dg_get_entity(scene->entities, "music");
-    sfMusic *music_music = dg_entity_get_component(music_ent, "sound");
-    sfMusic_stop(music_music);
-    dg_entity_t *music_ent_game = dg_get_entity(new_scene->entities, "music");
-    sfMusic *music__game = dg_entity_get_component(music_ent_game, "sound");
-    sfMusic_play(music__game);
-
-    old_scene->run = 0;
-    old_scene->display = 0;
-    new_scene->run = 1;
-    new_scene->display = 1;
-    scene->run = 0;
-    scene->display = 0;
+    dg_scene_manager_add_scene(scene_main_menu());
+    dg_scene_manager_remove("game");
+    dg_scene_manager_remove("escape_menu");
 }
 
 static void go_to_quit(dg_window_t *w)
