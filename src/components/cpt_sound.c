@@ -21,6 +21,7 @@ static void cpt_sound_destroy(void *data)
 {
     sfMusic *sound = (sfMusic *)(data);
 
+    sfMusic_stop(sound);
     sfMusic_destroy(sound);
 }
 
