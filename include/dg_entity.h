@@ -13,6 +13,7 @@
 
 typedef struct dg_entity
 {
+    int activated;
     char *name;
     dg_array_t *components;
 } dg_entity_t;
