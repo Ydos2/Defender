@@ -31,9 +31,9 @@ dg_scene_t *scene_main_menu(void)
     dg_scene_t *scene = dg_scene_create("main_menu");
 
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){800, 500}, 100, "Play", &go_to_map));
+        ((sfVector2f){815, 500}, 100, "Play", &go_to_map));
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){800, 700}, 100, "Quit", &go_to_quit));
+        ((sfVector2f){815, 700}, 100, "Quit", &go_to_quit));
     dg_scene_add_ent(scene, ent_music("./sound/menu_song.ogg"));
     dg_scene_add_ent(scene, ent_sprite(0, 1, 0, 0));
     dg_scene_add_ent(scene, ent_text(800, 200, 200, "Menu"));

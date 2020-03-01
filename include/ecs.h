@@ -10,12 +10,12 @@
 
 #include "libdragon.h"
 
-//scenes
+// scenes
 dg_scene_t *scene_game(void);
 dg_scene_t *scene_main_menu(void);
 dg_scene_t *scene_escape_menu(void);
 
-//entities
+// entities
 dg_entity_t *ent_music(char *path);
 dg_entity_t *ent_sprite(int id, float scale, float x, float y);
 dg_entity_t *ent_text(int x, int y, int scale, char *text);
@@ -26,7 +26,7 @@ dg_entity_t *ent_path(sfVector2f *vs);
 dg_entity_t *ent_slot(sfVector2f pos, int id
     , void (*action)(int));
 
-//components
+// components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
 dg_component_t *cpt_text(sfVector2f pos, int scale, char *content);
 dg_component_t *cpt_scale(float x, float y);
@@ -39,7 +39,7 @@ dg_component_t *cpt_path(sfVector2f *vs);
 dg_component_t *cpt_path_follower(void);
 dg_component_t *cpt_action_slot(void (*action)(int stat));
 
-//systems
+// systems
 void sys_render(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_display_text(dg_entity_t *entity, dg_window_t *w,
@@ -51,10 +51,13 @@ void sys_escape(dg_entity_t *entity, dg_window_t *w,
 void sys_follow_path(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 
+// init
+void init_img(void);
+
 // utilities
 void sound_play(sfMusic *sound);
 
-//monsters
+// monsters
 void monster_basic(dg_entity_t *entity);
 
 #endif

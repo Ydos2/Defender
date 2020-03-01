@@ -40,12 +40,15 @@ SRC_SYS =	src/systems/sys_render.c			\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 
+SRC_INI =	src/init/init_img.c					\
+
 SRC	=	$(SRC_OTH)	\
 		$(SRC_SCN)	\
 		$(SRC_CPT)	\
 		$(SRC_ENT)	\
 		$(SRC_SYS)	\
 		$(SRC_MNT)	\
+		$(SRC_INI)	\
 
 NAME	=	my_defender
 
