@@ -9,15 +9,16 @@
 #include "libdragon.h"
 #include "ecs.h"
 
-dg_entity_t *ent_slot(sfVector2f pos, int id
-    , void (*action)(int))
+dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
+    , void (*action)(dg_window_t *w))
 {
     dg_entity_t *slot = dg_entity_create("slot");
 
     dg_entity_add_component(slot, dg_cpt_pos(pos.x, pos.y));
-    dg_entity_add_component(slot, cpt_scale(0.2, 0.2));
-    dg_entity_add_component(slot, cpt_box_collider(0, 0, 60, 225));
+    dg_entity_add_component(slot, cpt_scale(size.x, size.y));
+    dg_entity_add_component(slot, cpt_box_collider
+        (0, 0, 220 * size.x, 220 * size.y));
     dg_entity_add_component(slot, cpt_action_slot(action));
-    dg_entity_add_component(slot, cpt_spritesheet(4));
+    dg_entity_add_component(slot, cpt_spritesheet(5));
     return slot;
 }

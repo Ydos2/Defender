@@ -37,6 +37,7 @@ SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_button.c			\
 			src/systems/sys_escape.c			\
 			src/systems/sys_follow_path.c		\
+			src/systems/sys_slot.c				\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 

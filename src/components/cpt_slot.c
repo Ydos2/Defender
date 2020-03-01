@@ -13,7 +13,7 @@ static void component_destroy(void *data)
 {
 }
 
-dg_component_t *cpt_action_slot(void (*action)(int stat))
+dg_component_t *cpt_action_slot(void (*action)(dg_window_t *w))
 {
     void (*destroy)(void *) = &component_destroy;
     dg_component_t *component = dg_component_create

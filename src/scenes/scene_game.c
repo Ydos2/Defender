@@ -9,12 +9,11 @@
 #include "libdragon.h"
 #include "ecs.h"
 
-static void change_stat(int stat)
+static void change_stat(dg_window_t *w)
 {
     dg_scene_t *scene = dg_scene_manager_get_scene("game");
 
-    dg_scene_add_ent(scene, ent_music("./sound/mouse_click.ogg"));
-    (void)stat;
+    dg_scene_add_ent(scene, ent_music("./sound/click.ogg"));
 }
 
 sfVector2f *get_path(void)
@@ -37,11 +36,12 @@ dg_scene_t *scene_game(void)
     scene_escape = dg_scene_manager_get_scene("escape_menu");
     dg_scene_add_ent(scene, dg_ent_camera(0, 0));
     dg_scene_add_ent(scene, ent_music("./sound/main_theme.ogg"));
-    dg_scene_add_ent(scene, ent_slot
-        ((sfVector2f){0, 0}, 0, &change_stat));
+    dg_scene_add_ent(scene, ent_slot((sfVector2f){0, 0},
+        (sfVector2f){0.5, 0.5}, &change_stat));
     dg_scene_add_ent(scene, ent_sprite(2, 1, 0, 0));
     dg_scene_add_ent(scene, ent_monster((sfVector2f) {100, 100}, 0));
     dg_scene_add_ent(scene, ent_path(get_path()));
+    dg_scene_add_sys(scene, dg_system_create(&sys_slot, 0));
     dg_scene_add_sys(scene, dg_system_create(&dg_sys_animator, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_render, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_escape, 1));

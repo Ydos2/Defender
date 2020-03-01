@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2020
-** cpt_button
+** ent_button
 ** File description:
-** cpt_button
+** ent_button
 */
 
 #include <stdlib.h>

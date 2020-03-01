@@ -23,8 +23,8 @@ dg_entity_t *ent_button(sfVector2f pos, int size, char *text
     , void (*action)(dg_window_t *));
 dg_entity_t *ent_monster(sfVector2f pos, int id);
 dg_entity_t *ent_path(sfVector2f *vs);
-dg_entity_t *ent_slot(sfVector2f pos, int id
-    , void (*action)(int));
+dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
+    , void (*action)(dg_window_t *w));
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
@@ -37,7 +37,7 @@ dg_component_t *cpt_sound(char *path);
 dg_component_t *cpt_tag(char *tag);
 dg_component_t *cpt_path(sfVector2f *vs);
 dg_component_t *cpt_path_follower(void);
-dg_component_t *cpt_action_slot(void (*action)(int stat));
+dg_component_t *cpt_action_slot(void (*action)(dg_window_t *));
 
 // systems
 void sys_render(dg_entity_t *entity, dg_window_t *w,
@@ -49,6 +49,8 @@ void sys_button(dg_entity_t *entity, dg_window_t *w,
 void sys_escape(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_follow_path(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void sys_slot(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 
 // init
