@@ -15,6 +15,7 @@ dg_entity_t *dg_entity_create(char *name)
 
     if (!entity)
         return 0;
+    entity->activated = 1;
     entity->name = name;
     entity->components = 0;
     return entity;

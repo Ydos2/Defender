@@ -53,9 +53,11 @@ static void dg_scene_launch_system(dg_scene_t *scene, dg_system_t *sys,
     if (!scene->run)
         dt.microseconds = 0;
     for (tmp = scene->entities; scene && tmp; tmp = tmp->next) {
-        if (scene->run && !sys->is_render)
+        if (((dg_entity_t *)(tmp->data))->activated
+            && scene->run && !sys->is_render)
             sys->system(tmp->data, w, &(scene->entities), dt);
-        else if (scene->display && sys->is_render)
+        else if (((dg_entity_t *)(tmp->data))->activated
+            && scene->display && sys->is_render)
             sys->system(tmp->data, w, &(scene->entities), dt);
     }
 }
