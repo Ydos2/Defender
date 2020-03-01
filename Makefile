@@ -19,24 +19,33 @@ SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_box_collider.c	\
 			src/components/cpt_spritesheet.c	\
 			src/components/cpt_sound.c			\
+			src/components/cpt_tag.c			\
+			src/components/cpt_path.c			\
+			src/components/cpt_path_follower.c	\
 			src/components/cpt_slot.c			\
 
 SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_sprite.c			\
 			src/entities/ent_text.c				\
 			src/entities/ent_button.c			\
+			src/entities/ent_monster.c			\
+			src/entities/ent_path.c				\
 			src/entities/ent_slot.c				\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
 			src/systems/sys_button.c			\
 			src/systems/sys_escape.c			\
+			src/systems/sys_follow_path.c		\
+
+SRC_MNT =	src/monsters/monster_basic.c		\
 
 SRC	=	$(SRC_OTH)	\
 		$(SRC_SCN)	\
 		$(SRC_CPT)	\
 		$(SRC_ENT)	\
 		$(SRC_SYS)	\
+		$(SRC_MNT)	\
 
 NAME	=	my_defender
 

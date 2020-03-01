@@ -25,12 +25,8 @@ void sys_display_text(dg_entity_t *entity, dg_window_t *w,
     sfVector2f *pos = (sfVector2f *)
         (dg_entity_get_component(entity, "pos"));
     sfText *text = (sfText *)(dg_entity_get_component(entity, "text"));
-    sfVector2f *scale = (sfVector2f *)
-        (dg_entity_get_component(entity, "scale"));
 
     if (!dg_system_require(entity, 2, "text", "pos"))
         return;
-    if (scale)
-        sfText_setCharacterSize(text, scale->x * 275);
     set_text_offset(w, *pos, text);
 }

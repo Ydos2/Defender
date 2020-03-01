@@ -20,6 +20,7 @@ typedef struct dg_scene
     dg_array_t *systems;
     int run;
     int display;
+    int destroy;
 } dg_scene_t;
 
 dg_scene_t *dg_scene_create(char *);

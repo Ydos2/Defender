@@ -11,19 +11,14 @@
 
 static void go_to_map(dg_window_t *w)
 {
-    dg_scene_t *old_scene = dg_scene_manager_get_scene("main_menu");
     dg_scene_t *new_scene = 0;
-    dg_entity_t *music_ent = dg_get_entity(old_scene->entities, "music");
-    sfMusic *music_music = dg_entity_get_component(music_ent, "sound");
 
-    sfMusic_stop(music_music);
     dg_scene_manager_add_scene(scene_game());
     dg_scene_manager_add_scene(scene_escape_menu());
     new_scene = dg_scene_manager_get_scene("game");
-    old_scene->run = 0;
-    old_scene->display = 0;
     new_scene->run = 1;
     new_scene->display = 1;
+    dg_scene_manager_remove("main_menu");
 }
 
 static void go_to_quit(dg_window_t *w)
@@ -36,9 +31,9 @@ dg_scene_t *scene_main_menu(void)
     dg_scene_t *scene = dg_scene_create("main_menu");
 
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){800, 500}, 10, "Play", &go_to_map));
+        ((sfVector2f){800, 500}, 100, "Play", &go_to_map));
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){800, 700}, 10, "Quit", &go_to_quit));
+        ((sfVector2f){800, 700}, 100, "Quit", &go_to_quit));
     dg_scene_add_ent(scene, ent_music("./sound/menu_song.ogg"));
     dg_scene_add_ent(scene, ent_sprite(0, 1, 0, 0));
     dg_scene_add_ent(scene, ent_text(800, 200, 200, "Menu"));

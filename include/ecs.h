@@ -21,6 +21,8 @@ dg_entity_t *ent_sprite(int id, float scale, float x, float y);
 dg_entity_t *ent_text(int x, int y, int scale, char *text);
 dg_entity_t *ent_button(sfVector2f pos, int size, char *text
     , void (*action)(dg_window_t *));
+dg_entity_t *ent_monster(sfVector2f pos, int id);
+dg_entity_t *ent_path(sfVector2f *vs);
 dg_entity_t *ent_slot(sfVector2f pos, int id
     , void (*action)(int));
 
@@ -32,6 +34,9 @@ dg_component_t *cpt_box_collider(float left, float top
     , float height, float width);
 dg_component_t *cpt_spritesheet(int id);
 dg_component_t *cpt_sound(char *path);
+dg_component_t *cpt_tag(char *tag);
+dg_component_t *cpt_path(sfVector2f *vs);
+dg_component_t *cpt_path_follower(void);
 dg_component_t *cpt_action_slot(void (*action)(int stat));
 
 //systems
@@ -43,8 +48,13 @@ void sys_button(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_escape(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
+void sys_follow_path(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
 
 // utilities
 void sound_play(sfMusic *sound);
+
+//monsters
+void monster_basic(dg_entity_t *entity);
 
 #endif
