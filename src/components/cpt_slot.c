@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2020
-** cpt_action
+** cpt_slot
 ** File description:
-** cpt_action
+** cpt_slot
 */
 
 #include <stdlib.h>
@@ -13,10 +13,11 @@ static void component_destroy(void *data)
 {
 }
 
-dg_component_t *cpt_action(void (*action)(dg_window_t *))
+dg_component_t *cpt_action_slot(void (*action)(int stat))
 {
     void (*destroy)(void *) = &component_destroy;
-    dg_component_t *component = dg_component_create("action", action, destroy);
+    dg_component_t *component = dg_component_create
+        ("action_slot", action, destroy);
 
     return component;
 }

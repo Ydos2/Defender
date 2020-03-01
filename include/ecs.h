@@ -21,6 +21,8 @@ dg_entity_t *ent_sprite(int id, float scale, float x, float y);
 dg_entity_t *ent_text(int x, int y, int scale, char *text);
 dg_entity_t *ent_button(sfVector2f pos, int size, char *text
     , void (*action)(dg_window_t *));
+dg_entity_t *ent_slot(sfVector2f pos, int id
+    , void (*action)(int));
 
 //components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
@@ -30,6 +32,7 @@ dg_component_t *cpt_box_collider(float left, float top
     , float height, float width);
 dg_component_t *cpt_spritesheet(int id);
 dg_component_t *cpt_sound(char *path);
+dg_component_t *cpt_action_slot(void (*action)(int stat));
 
 //systems
 void sys_render(dg_entity_t *entity, dg_window_t *w,
