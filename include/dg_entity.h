@@ -13,6 +13,7 @@
 
 typedef struct dg_entity
 {
+    int destroy;
     int activated;
     char *name;
     dg_array_t *components;
@@ -27,6 +28,8 @@ void dg_entity_add_component(dg_entity_t *, dg_component_t *);
 int dg_entity_has_component(dg_entity_t *, char *);
 
 void *dg_entity_get_component(dg_entity_t *, char *);
+
+dg_component_t *dg_entity_get_full_component(dg_entity_t *, char *);
 
 dg_component_t *dg_entity_rm_component(dg_entity_t *, char *);
 

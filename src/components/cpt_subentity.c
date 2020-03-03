@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2020
-** cpt_slot
+** my_defender
 ** File description:
-** cpt_slot
+** cpt_subentity
 */
 
 #include <stdlib.h>
@@ -11,14 +11,14 @@
 
 static void component_destroy(void *data)
 {
+    (void)data;
 }
 
-dg_component_t *cpt_action_slot(void (*action)(dg_entity_t *, dg_window_t *,
-    dg_array_t **, sfTime))
+dg_component_t *cpt_subentity(dg_entity_t **entity)
 {
     void (*destroy)(void *) = &component_destroy;
     dg_component_t *component = dg_component_create
-        ("action_slot", action, destroy);
+        ("subentity", entity, destroy);
 
     return component;
 }

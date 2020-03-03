@@ -9,6 +9,11 @@
 #include "libdragon.h"
 #include "ecs.h"
 
+static void load_map_solo(void)
+{
+    dg_ressources_add_spritesheet("./img/solo_map_01.png", 1920, 1080);
+}
+
 void init_img(void)
 {
     dg_ressources_add_spritesheet("./img/background.jpg", 1920, 1080);
@@ -17,4 +22,5 @@ void init_img(void)
     dg_ressources_add_spritesheet("./img/panel.png", 626, 417);
     dg_ressources_add_spritesheet("./img/monstre.png", 64, 64);
     dg_ressources_add_spritesheet("./img/slot.png", 220, 220);
+    load_map_solo();
 }

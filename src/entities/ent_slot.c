@@ -10,7 +10,8 @@
 #include "ecs.h"
 
 dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
-    , void (*action)(dg_window_t *w))
+    , void (*action)(dg_entity_t *, dg_window_t *,
+    dg_array_t **, sfTime))
 {
     dg_entity_t *slot = dg_entity_create("slot");
 
@@ -20,5 +21,6 @@ dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
         (0, 0, 220 * size.x, 220 * size.y));
     dg_entity_add_component(slot, cpt_action_slot(action));
     dg_entity_add_component(slot, cpt_spritesheet(5));
+    dg_entity_add_component(slot, cpt_subentity(NULL));
     return slot;
 }

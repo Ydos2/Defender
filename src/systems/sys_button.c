@@ -29,5 +29,5 @@ void sys_button(dg_entity_t *entity, dg_window_t *w,
     rect->top = pos->y;
     if (sfIntRect_contains(rect, mouse.x, mouse.y)
         && sfMouse_isButtonPressed(sfMouseLeft))
-        action(w);
+        action ? action(w) : 0;
 }

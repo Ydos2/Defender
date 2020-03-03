@@ -12,6 +12,7 @@ SRC_OTH = 	src/main.c							\
 SRC_SCN =	src/scenes/scene_main_menu.c		\
 			src/scenes/scene_game.c				\
 			src/scenes/scene_escape_menu.c		\
+			src/scenes/scene_endless_waves.c	\
 
 SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_text.c			\
@@ -23,6 +24,7 @@ SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_path.c			\
 			src/components/cpt_path_follower.c	\
 			src/components/cpt_slot.c			\
+			src/components/cpt_subentity.c		\
 
 SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_sprite.c			\

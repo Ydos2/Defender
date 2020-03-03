@@ -49,6 +49,7 @@ static void dg_scene_launch_system(dg_scene_t *scene, dg_system_t *sys,
     dg_window_t *w, sfTime dt)
 {
     dg_array_t *tmp = 0;
+    int id = 0;
 
     if (!scene->run)
         dt.microseconds = 0;
@@ -59,6 +60,11 @@ static void dg_scene_launch_system(dg_scene_t *scene, dg_system_t *sys,
         else if (((dg_entity_t *)(tmp->data))->activated
             && scene->display && sys->is_render)
             sys->system(tmp->data, w, &(scene->entities), dt);
+        if (((dg_entity_t *)(tmp->data))->destroy) {
+            printf("%p\n", dg_arr_get_data(scene->entities, id));
+            dg_arr_remove_at(&(scene->entities), id);
+        }
+        id++;
     }
 }
 

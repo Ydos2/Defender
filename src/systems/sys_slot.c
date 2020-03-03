@@ -14,8 +14,8 @@ void sys_slot(dg_entity_t *entity, dg_window_t *w,
 {
     dg_entity_t *camera = dg_get_entity(*entities, "camera");
     sfVector2f *c_pos = (sfVector2f *)(dg_entity_get_component(camera, "pos"));
-    void (*action)(dg_window_t *) = (void (*)(dg_window_t *))
-        (dg_entity_get_component(entity, "action_slot"));
+    dg_sysf_t action = (dg_sysf_t)(dg_entity_get_component(entity,
+        "action_slot"));
     sfVector2f *pos = (sfVector2f *)
         (dg_entity_get_component(entity, "pos"));
     sfIntRect *rect = (sfIntRect *)
@@ -29,5 +29,5 @@ void sys_slot(dg_entity_t *entity, dg_window_t *w,
     rect->top = pos->y;
     if (sfIntRect_contains(rect, mouse.x, mouse.y)
         && sfMouse_isButtonPressed(sfMouseLeft))
-        action(w);
+        action(entity, w, entities, dt);
 }
