@@ -36,6 +36,7 @@ SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_slot.c				\
 			src/entities/ent_map.c				\
 			src/entities/ent_game_data.c		\
+			src/entities/ent_tower.c			\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
@@ -48,6 +49,8 @@ SRC_SYS =	src/systems/sys_render.c			\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 
+SRC_TOW =	src/towers/tower_basic.c			\
+
 SRC_INI =	src/init/init_img.c					\
 			src/init/build_menu.c				\
 
@@ -58,6 +61,7 @@ SRC	=	$(SRC_OTH)	\
 		$(SRC_SYS)	\
 		$(SRC_MNT)	\
 		$(SRC_INI)	\
+		$(SRC_TOW)	\
 
 NAME	=	my_defender
 
