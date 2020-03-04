@@ -23,4 +23,5 @@ void init_img(void)
     dg_ressources_add_spritesheet("./img/monstre.png", 64, 64);
     dg_ressources_add_spritesheet("./img/slot.png", 220, 220);
     load_map_solo();
+    dg_ressources_add_spritesheet("./img/tower.png", 64, 64);
 }

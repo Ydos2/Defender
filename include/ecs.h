@@ -29,7 +29,7 @@ dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
     dg_array_t **, sfTime));
 dg_entity_t *ent_map(int id, float scale, float x, float y);
 dg_entity_t *ent_game_data(void);
-
+dg_entity_t *ent_tower(sfVector2f pos, int id);
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
@@ -75,5 +75,8 @@ void sound_play(sfMusic *sound);
 
 // monsters
 void monster_basic(dg_entity_t *entity);
+
+// towers
+void tower_basic(dg_entity_t *entity);
 
 #endif
