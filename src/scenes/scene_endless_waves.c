@@ -29,7 +29,7 @@ dg_scene_t *scene_endless_waves(void)
     dg_scene_t *scene = dg_scene_create("game");
 
     dg_scene_add_ent(scene, dg_ent_camera(0, 0));
-    dg_scene_add_ent(scene, ent_music("./sound/main_theme.ogg"));
+    dg_scene_add_ent(scene, ent_music("./sound/theme_game.ogg"));
     dg_scene_add_ent(scene, ent_slot((sfVector2f){0, 0},
         (sfVector2f){0.5, 0.5}, &build_menu));
     dg_scene_add_ent(scene, ent_map(6, 1, 0, 0));
