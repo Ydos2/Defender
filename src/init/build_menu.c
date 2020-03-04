@@ -35,9 +35,8 @@ void build_menu(dg_entity_t *entity, dg_window_t *w,
         sub_ent = ent_slot((sfVector2f){200, 200}, (sfVector2f){1, 1}, &id);
         dg_arr_add_end((dg_array_t **)(&(sub->data)), sub_ent);
         dg_arr_add_end(entities, sub_ent);
-        printf("slot created\n");
     } else {
-        dg_arr_free_all(&(sub->data));
+        dg_arr_free_all((dg_array_t **)(&(sub->data)));
         sub->data = NULL;
     }
 }

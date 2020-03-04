@@ -18,6 +18,6 @@ void sys_create_tower(dg_entity_t *entity, dg_window_t *w,
 
     if (!gd)
         return;
-    if (gd->build_id == 0 && sfMouse_isButtonPressed(sfMouseLeft))
+    if (gd->build_id == 0 && w->events.mouse_pressed_left)
         dg_arr_add_end(entities, ent_monster((sfVector2f){mouse.x, mouse.y}, 0));
 }

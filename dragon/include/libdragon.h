@@ -24,6 +24,7 @@
 #include "dg_scene_manager.h"
 #include "dg_cpt.h"
 #include "dg_ressources.h"
+#include "dg_event.h"
 
 int dg_play(sfVector2u, char *, int, void *);
 #endif

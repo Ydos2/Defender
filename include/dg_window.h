@@ -10,12 +10,14 @@
 
 #include <SFML/Graphics.h>
 #include "dg_framebuffer.h"
+#include "dg_event.h"
 #include <stdbool.h>
 
 typedef struct dg_window
 {
     sfRenderWindow *window;
     dg_framebuffer_t *fb;
+    dg_event_t events;
     bool quit;
     int id;
 

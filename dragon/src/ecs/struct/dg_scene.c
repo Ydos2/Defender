@@ -60,10 +60,8 @@ static void dg_scene_launch_system(dg_scene_t *scene, dg_system_t *sys,
         else if (((dg_entity_t *)(tmp->data))->activated
             && scene->display && sys->is_render)
             sys->system(tmp->data, w, &(scene->entities), dt);
-        if (((dg_entity_t *)(tmp->data))->destroy) {
-            printf("%p\n", dg_arr_get_data(scene->entities, id));
+        if (((dg_entity_t *)(tmp->data))->destroy)
             dg_arr_remove_at(&(scene->entities), id);
-        }
         id++;
     }
 }

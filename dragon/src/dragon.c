@@ -17,30 +17,34 @@ void dg_end(void *, int);
 
 int dg_loop(dg_window_t *, void *, sfTime);
 
-static void dg_manage_event(sfRenderWindow *window, sfEvent event)
+static void dg_manage_event(dg_window_t *w)
 {
-    while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed) {
-            sfRenderWindow_close(window);
-        }
+    sfEvent event;
+
+    w->events = (dg_event_t){0};
+    while (sfRenderWindow_pollEvent(w->window, &event)) {
+        if (event.type == sfEvtClosed)
+            sfRenderWindow_close(w->window);
+        w->events.mouse_pressed_left +=
+            (event.type == sfEvtMouseButtonPressed &&
+                event.mouseButton.button == sfMouseLeft) ? 1 : 0;
     }
 }
 
 static int dg_render_screen(dg_window_t *window, void *var)
 {
-    sfEvent event;
     sfClock *clock = sfClock_create();
     sfTime dt = {0};
     int to_return = 0;
 
     while (sfRenderWindow_isOpen(window->window)) {
-        dg_manage_event(window->window, event);
+        window->events = (dg_event_t){0};
+        dg_manage_event(window);
         to_return = dg_loop(window, var, dt);
         dg_framebuffer_update(window->fb, window->window);
         sfRenderWindow_display(window->window);
         dt = sfClock_getElapsedTime(clock);
         sfClock_restart(clock);
-
         if (window->quit == true)
             sfRenderWindow_close(window->window);
     }
