@@ -27,6 +27,7 @@ dg_entity_t *ent_path(sfVector2f *vs);
 dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
     , void (*action)(dg_entity_t *, dg_window_t *,
     dg_array_t **, sfTime));
+dg_entity_t *ent_map(int id, float scale, float x, float y);
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
@@ -55,6 +56,8 @@ void sys_escape(dg_entity_t *entity, dg_window_t *w,
 void sys_follow_path(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_slot(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void sys_camera(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 
 // init

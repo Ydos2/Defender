@@ -33,6 +33,7 @@ SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_monster.c			\
 			src/entities/ent_path.c				\
 			src/entities/ent_slot.c				\
+			src/entities/ent_map.c				\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
@@ -40,6 +41,7 @@ SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_escape.c			\
 			src/systems/sys_follow_path.c		\
 			src/systems/sys_slot.c				\
+			src/systems/sys_camera.c			\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 
