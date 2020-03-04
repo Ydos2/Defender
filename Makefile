@@ -25,6 +25,7 @@ SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_path_follower.c	\
 			src/components/cpt_slot.c			\
 			src/components/cpt_subentity.c		\
+			src/components/cpt_game_data.c		\
 
 SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_sprite.c			\
@@ -34,6 +35,7 @@ SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_path.c				\
 			src/entities/ent_slot.c				\
 			src/entities/ent_map.c				\
+			src/entities/ent_game_data.c		\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
@@ -42,10 +44,12 @@ SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_follow_path.c		\
 			src/systems/sys_slot.c				\
 			src/systems/sys_camera.c			\
+			src/systems/sys_create_tower.c		\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 
 SRC_INI =	src/init/init_img.c					\
+			src/init/build_menu.c				\
 
 SRC	=	$(SRC_OTH)	\
 		$(SRC_SCN)	\

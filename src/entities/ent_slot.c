@@ -21,6 +21,6 @@ dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
         (0, 0, 220 * size.x, 220 * size.y));
     dg_entity_add_component(slot, cpt_action_slot(action));
     dg_entity_add_component(slot, cpt_spritesheet(5));
-    dg_entity_add_component(slot, cpt_subentity(NULL));
+    dg_entity_add_component(slot, cpt_subentity());
     return slot;
 }

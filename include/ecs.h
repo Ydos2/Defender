@@ -28,6 +28,8 @@ dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
     , void (*action)(dg_entity_t *, dg_window_t *,
     dg_array_t **, sfTime));
 dg_entity_t *ent_map(int id, float scale, float x, float y);
+dg_entity_t *ent_game_data(void);
+
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
@@ -42,7 +44,8 @@ dg_component_t *cpt_path(sfVector2f *vs);
 dg_component_t *cpt_path_follower(void);
 dg_component_t *cpt_action_slot(void (*action)(dg_entity_t *, dg_window_t *,
     dg_array_t **, sfTime));
-dg_component_t *cpt_subentity(dg_entity_t **entity);
+dg_component_t *cpt_subentity(void);
+dg_component_t *cpt_game_data(void);
 
 // systems
 void sys_render(dg_entity_t *entity, dg_window_t *w,
@@ -59,9 +62,13 @@ void sys_slot(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_camera(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
+void sys_create_tower(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
 
 // init
 void init_img(void);
+void build_menu(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
 
 // utilities
 void sound_play(sfMusic *sound);
