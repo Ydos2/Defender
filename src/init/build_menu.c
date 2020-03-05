@@ -33,7 +33,8 @@ void build_menu(dg_entity_t *entity, dg_window_t *w,
     if (!sub)
         return;
     if (!(sub->data)) {
-        sub_ent = ent_slot((sfVector2f){pos->x + 200, pos->y}, (sfVector2f){0.5, 0.5}, &id);
+        sub_ent = ent_slot((sfVector2f){pos->x + 200, pos->y}
+            , (sfVector2f){0.5, 0.5}, &id);
         dg_arr_add_end((dg_array_t **)(&(sub->data)), sub_ent);
         dg_arr_add_end(entities, sub_ent);
     } else {
