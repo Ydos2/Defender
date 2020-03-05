@@ -24,6 +24,7 @@ dg_component_t *cpt_game_data(void)
 
     game_data_t *game_data = malloc(sizeof(game_data_t));
     game_data->build_id = -1;
+    game_data->can_spawn_tower = 1;
     component = dg_component_create("game_data", game_data, destroy);
     return component;
 }

@@ -19,7 +19,12 @@ void sys_create_tower(dg_entity_t *entity, dg_window_t *w,
 
     if (!gd)
         return;
-    if (gd->build_id == 0 && w->events.mouse_pressed_left)
-        dg_arr_add_end(entities, ent_monster(
-            (sfVector2f){mouse.x, mouse.y}, 0));
+    if (w->events.mouse_pressed_left) {
+        if (gd->build_id == 0 && gd->can_spawn_tower) {
+            dg_arr_add_end(entities, ent_tower(
+                (sfVector2f){mouse.x, mouse.y}, 0));
+        }
+        gd->build_id = -1;
+    }
+    gd->can_spawn_tower = 1;
 }
