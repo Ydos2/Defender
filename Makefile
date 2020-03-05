@@ -26,6 +26,7 @@ SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_slot.c			\
 			src/components/cpt_subentity.c		\
 			src/components/cpt_game_data.c		\
+			src/components/cpt_build_id.c		\
 
 SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_sprite.c			\
@@ -46,6 +47,7 @@ SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_slot.c				\
 			src/systems/sys_camera.c			\
 			src/systems/sys_create_tower.c		\
+			src/systems/sys_tower_spawn_range.c	\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 

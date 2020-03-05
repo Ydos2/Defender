@@ -46,6 +46,7 @@ dg_component_t *cpt_action_slot(void (*action)(dg_entity_t *, dg_window_t *,
     dg_array_t **, sfTime));
 dg_component_t *cpt_subentity(void);
 dg_component_t *cpt_game_data(void);
+dg_component_t *cpt_build_id(int id);
 
 // systems
 void sys_render(dg_entity_t *entity, dg_window_t *w,
@@ -63,6 +64,8 @@ void sys_slot(dg_entity_t *entity, dg_window_t *w,
 void sys_camera(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_create_tower(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void sys_tower_spawn_range(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 
 // init

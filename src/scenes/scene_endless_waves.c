@@ -36,6 +36,7 @@ dg_scene_t *scene_endless_waves(void)
     dg_scene_add_ent(scene, ent_monster((sfVector2f) {-10, 200}, 0));
     dg_scene_add_ent(scene, ent_path(game_path()));
     dg_scene_add_ent(scene, ent_game_data());
+    dg_scene_add_sys(scene, dg_system_create(&sys_tower_spawn_range, 0));
     dg_scene_add_sys(scene, dg_system_create(&sys_slot, 0));
     dg_scene_add_sys(scene, dg_system_create(&dg_sys_animator, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_render, 1));

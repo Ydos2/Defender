@@ -19,6 +19,7 @@ dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
     dg_entity_add_component(slot, cpt_scale(size.x, size.y));
     dg_entity_add_component(slot, cpt_box_collider
         (0, 0, 220 * size.x, 220 * size.y));
+    dg_entity_add_component(slot, cpt_build_id(0));
     dg_entity_add_component(slot, cpt_action_slot(action));
     dg_entity_add_component(slot, cpt_spritesheet(5));
     dg_entity_add_component(slot, cpt_subentity());

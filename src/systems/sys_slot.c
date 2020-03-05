@@ -28,6 +28,6 @@ void sys_slot(dg_entity_t *entity, dg_window_t *w,
     rect->left = pos->x;
     rect->top = pos->y;
     if (sfIntRect_contains(rect, mouse.x, mouse.y)
-        && sfMouse_isButtonPressed(sfMouseLeft))
+        && w->events.mouse_pressed_left)
         action(entity, w, entities, dt);
 }
