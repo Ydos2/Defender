@@ -27,6 +27,7 @@ SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_subentity.c		\
 			src/components/cpt_game_data.c		\
 			src/components/cpt_build_id.c		\
+			src/components/cpt_script.c			\
 
 SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_sprite.c			\
@@ -38,6 +39,7 @@ SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_map.c				\
 			src/entities/ent_game_data.c		\
 			src/entities/ent_tower.c			\
+			src/entities/ent_score.c			\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
@@ -48,6 +50,7 @@ SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_camera.c			\
 			src/systems/sys_create_tower.c		\
 			src/systems/sys_tower_spawn_range.c	\
+			src/systems/sys_script.c			\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 
@@ -55,6 +58,8 @@ SRC_TOW =	src/towers/tower_basic.c			\
 
 SRC_INI =	src/init/init_img.c					\
 			src/init/build_menu.c				\
+
+SRC_SPT =	src/scripts/script_score.c			\
 
 SRC	=	$(SRC_OTH)	\
 		$(SRC_SCN)	\
@@ -64,6 +69,7 @@ SRC	=	$(SRC_OTH)	\
 		$(SRC_MNT)	\
 		$(SRC_INI)	\
 		$(SRC_TOW)	\
+		$(SRC_SPT)	\
 
 NAME	=	my_defender
 
