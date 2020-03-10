@@ -30,6 +30,7 @@ dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
 dg_entity_t *ent_map(int id, float scale, float x, float y);
 dg_entity_t *ent_game_data(void);
 dg_entity_t *ent_tower(sfVector2f pos, int id, float radius);
+dg_entity_t *ent_score(sfVector2f pos, int scale, char *text, int *number);
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
@@ -47,6 +48,8 @@ dg_component_t *cpt_action_slot(void (*action)(dg_entity_t *, dg_window_t *,
 dg_component_t *cpt_subentity(void);
 dg_component_t *cpt_game_data(void);
 dg_component_t *cpt_build_id(int id);
+dg_component_t *cpt_script(void *(*init)(void *), dg_sysf_t loop,
+    void (*end)(void *), void *idata);
 
 // systems
 void sys_render(dg_entity_t *entity, dg_window_t *w,
@@ -66,6 +69,8 @@ void sys_camera(dg_entity_t *entity, dg_window_t *w,
 void sys_create_tower(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_tower_spawn_range(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void sys_script(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void sys_tower_attack(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
