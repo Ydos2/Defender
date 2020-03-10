@@ -48,6 +48,7 @@ SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_camera.c			\
 			src/systems/sys_create_tower.c		\
 			src/systems/sys_tower_spawn_range.c	\
+			src/systems/sys_tower_attack.c		\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 
