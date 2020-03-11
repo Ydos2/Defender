@@ -40,6 +40,7 @@ static void scene_add_ent(dg_scene_t *scene)
 
 static void scene_add_sys(dg_scene_t *scene)
 {
+    dg_scene_add_sys(scene, dg_system_create(&sys_script, 0));
     dg_scene_add_sys(scene, dg_system_create(&sys_tower_spawn_range, 0));
     dg_scene_add_sys(scene, dg_system_create(&sys_slot, 0));
     dg_scene_add_sys(scene, dg_system_create(&sys_display_text, 1));
@@ -48,7 +49,6 @@ static void scene_add_sys(dg_scene_t *scene)
     dg_scene_add_sys(scene, dg_system_create(&sys_escape, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_follow_path, 0));
     dg_scene_add_sys(scene, dg_system_create(&sys_create_tower, 0));
-    dg_scene_add_sys(scene, dg_system_create(&sys_script, 0));
 }
 
 dg_scene_t *scene_endless_waves(void)

@@ -61,6 +61,7 @@ SRC_INI =	src/init/init_img.c					\
 			src/init/build_menu.c				\
 
 SRC_SPT =	src/scripts/script_score.c			\
+			src/scripts/script_attack_tower.c	\
 
 SRC	=	$(SRC_OTH)	\
 		$(SRC_SCN)	\
@@ -80,7 +81,7 @@ all:	$(NAME)	## Build the project
 
 $(NAME):
 	@make -C dragon/
-	@$(CC) -o $(NAME) $(SRC) -Iinclude -L./ -ldragon -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
+	@$(CC) -g3 -o $(NAME) $(SRC) -Iinclude -L./ -ldragon -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
 	@printf "[\e[1;34m-Link Obj-\e[0m] % 43s\n" $(NAME) | tr ' ' '.'
 	@printf "[\e[1;34m-Link Main-\e[0m] % 43s\n" $(SRC) | tr ' ' '.'
 	@printf "\e[1;3;5;32m▀▄▀▄▀▄ Finished compiling sources ▄▀▄▀▄▀\e[0m\n"

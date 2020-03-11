@@ -29,7 +29,7 @@ dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
     dg_array_t **, sfTime));
 dg_entity_t *ent_map(int id, float scale, float x, float y);
 dg_entity_t *ent_game_data(void);
-dg_entity_t *ent_tower(sfVector2f pos, int id, float radius);
+dg_entity_t *ent_tower(sfVector2f pos, int id, float *radius);
 dg_entity_t *ent_score(sfVector2f pos, int scale, char *text, int *number);
 
 // components
