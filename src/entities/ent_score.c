@@ -13,7 +13,7 @@
 dg_entity_t *ent_score(sfVector2f pos, int scale, char *text, int *number)
 {
     dg_entity_t *ctext = dg_entity_create("text");
-    void *idata[2] = {number, text};
+    void *idata[3] = {number, text, ctext};
 
     dg_entity_add_component(ctext, dg_cpt_pos(pos.x, pos.y));
     dg_entity_add_component(ctext, cpt_text((sfVector2f){0, 0}, scale, text));
