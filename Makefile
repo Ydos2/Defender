@@ -62,6 +62,14 @@ SRC_INI =	src/init/init_img.c					\
 
 SRC_SPT =	src/scripts/script_score.c			\
 			src/scripts/script_attack_tower.c	\
+			src/scripts/script_monster.c		\
+
+SRC_LIB =	lib/get_next_line.c			\
+			lib/my_putarray.c			\
+			lib/my_strcpy.c				\
+			lib/str_to_array.c			\
+			lib/tools_function.c		\
+			lib/transform_character.c	\
 
 SRC	=	$(SRC_OTH)	\
 		$(SRC_SCN)	\
@@ -73,6 +81,8 @@ SRC	=	$(SRC_OTH)	\
 		$(SRC_TOW)	\
 		$(SRC_SPT)	\
 
+LIB	=	$(SRC_LIB)	\
+
 NAME	=	my_defender
 
 DEBUG	=	defender.d
@@ -81,16 +91,19 @@ all:	$(NAME)	## Build the project
 
 $(NAME):
 	@make -C dragon/
-	@$(CC) -g3 -o $(NAME) $(SRC) -Iinclude -L./ -ldragon -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
+	@$(CC) -g3 -o $(NAME) $(SRC) $(LIB) -Iinclude -L./ -ldragon -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
 	@printf "[\e[1;34m-Link Obj-\e[0m] % 43s\n" $(NAME) | tr ' ' '.'
 	@printf "[\e[1;34m-Link Main-\e[0m] % 43s\n" $(SRC) | tr ' ' '.'
 	@printf "\e[1;3;5;32m▀▄▀▄▀▄ Finished compiling sources ▄▀▄▀▄▀\e[0m\n"
+	@printf "[\e[1;35m-Link Lib-\e[0m] % 43s\n" $(LIB) | tr ' ' '.'
+	@printf "\e[1;3;5;32m▀▄▀▄▀▄ Finished compiling lib ▄▀▄▀▄▀\e[0m\n"
 
 debug: ## Lunch the debug
 	@make -C dragon/
-	@$(CC) -g3 -o $(DEBUG) $(SRC) -Iinclude -L./ -ldragon -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
+	@$(CC) -g3 -o $(DEBUG) $(SRC) $(LIB) -Iinclude -L./ -ldragon -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
 	@printf "[\e[1;34m-Link Obj-\e[0m] % 43s\n" $(DEBUG) | tr ' ' '.'
 	@printf "[\e[1;34m-Link Main-\e[0m] % 43s\n" $(SRC) | tr ' ' '.'
+	@printf "[\e[1;34m-Link Main-\e[0m] % 43s\n" $(LIB) | tr ' ' '.'
 	@printf "\e[1;3;5;32m▀▄▀▄▀▄ Finished compiling sources debug ▄▀▄▀▄▀\e[0m\n"
 
 clean: ## Clean the useless file

@@ -30,4 +30,10 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_tower_end(void *data);
 
+// monster
+void *scp_monster_init(void *init_data);
+void scp_monster_loop(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void scp_monster_end(void *data);
+
 #endif /*SCRIPT_H_*/
