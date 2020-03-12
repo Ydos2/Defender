@@ -34,7 +34,7 @@ static void scene_add_ent(dg_scene_t *scene)
     dg_scene_add_ent(scene, ent_monster((sfVector2f) {-10, 200}, 0));
     dg_scene_add_ent(scene, ent_path(game_path()));
     dg_scene_add_ent(scene, ent_game_data());
-    dg_scene_add_ent(scene, ent_score((sfVector2f) {20, 20}, 200,
+    dg_scene_add_ent(scene, ent_score((sfVector2f) {20, 20}, 100,
         "money : ", NULL));
 }
 
