@@ -43,4 +43,13 @@ char *my_len_str(char *str);
 int my_atoi(char *str);
 int my_strlen(char const *str);
 
+// my_strdup.c
+char *my_strdup(char *src);
+
+// my_itoa.c
+char *my_itoa(int nb);
+
+// my_revstr
+char *my_revstr(char *str);
+
 #endif
