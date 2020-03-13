@@ -71,8 +71,9 @@ SRC_LIB =	lib/get_next_line.c			\
 			lib/tools_function.c		\
 			lib/transform_character.c	\
 			lib/my_strdup.c				\
-			lib/my_itoa.c				\
+			lib/itoa.c					\
 			lib/my_revstr.c				\
+			lib/nblen.c					\
 
 SRC	=	$(SRC_OTH)	\
 		$(SRC_SCN)	\
