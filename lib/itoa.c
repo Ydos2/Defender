@@ -5,6 +5,7 @@
 ** Return a number from a string (int)
 */
 
+#include <stdlib.h>
 #include "libmy.h"
 
 char *my_itoa(int nb)

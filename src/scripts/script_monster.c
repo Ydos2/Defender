@@ -12,18 +12,30 @@
 #include "enemy_data.h"
 #include "script.h"
 
+const void (*monsterCreation[1])(dg_entity_t *) = {&monster_basic};
+
 typedef struct data {
-    int *tracker;
-    char *text;
+    int *id;
+    sfVector2f *pos;
+    dg_entity_t *entity;
 } data_t;
 
 void *scp_monster_init(void *init_data)
 {
     void **idata = (void **) init_data;
     data_t *data = malloc(sizeof(data_t));
+    int id = 0;
+    dg_component_t *position = 0;
 
-    data->tracker = (int *)idata[0];
-    data->text = (char *)idata[1];
+    data->id = (int *)idata[0];
+    id = *data->id;
+    data->pos = (sfVector2f *)idata[1];
+    data->entity = (dg_entity_t *)idata[2];
+    position = dg_cpt_pos(data->pos->x, data->pos->y);
+    dg_entity_add_component(data->entity, position);
+    data->pos = (sfVector2f *)position->data;
+    dg_entity_add_component(data->entity, cpt_path_follower());
+    monsterCreation[id](data->entity);
     return data;
 }
 

@@ -52,4 +52,7 @@ char *my_itoa(int nb);
 // my_revstr
 char *my_revstr(char *str);
 
+// my_nblen
+int my_nblen(int nb);
+
 #endif
