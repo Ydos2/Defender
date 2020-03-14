@@ -51,7 +51,7 @@ dg_scene_t *scene_game(void)
     dg_scene_add_ent(scene, ent_tower
         ((sfVector2f) {500, 500}, 0, &rad, 10));
     dg_scene_add_ent(scene, ent_map(2, 1, 0, 0));
-    dg_scene_add_ent(scene, ent_monster((sfVector2f) {100, 100}, 0, 100));
+    dg_scene_add_ent(scene, ent_monster((sfVector2f) {100, 100}, 0));
     dg_scene_add_ent(scene, ent_path(get_path()));
     dg_scene_add_sys(scene, dg_system_create(&sys_tower_attack, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_camera, 0));

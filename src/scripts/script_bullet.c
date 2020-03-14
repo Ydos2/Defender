@@ -29,7 +29,7 @@ void *scp_bullet_init(void *init_data)
     dg_entity_add_component(data->entity, position);
     data->pos = (sfVector2f *)position->data;
     dg_entity_add_component(data->entity, cpt_spritesheet(9));
-    dg_entity_add_component(data->entity, cpt_path_follower());
+    dg_entity_add_component(data->entity, cpt_path_bullet());
     return data;
 }
 
