@@ -22,7 +22,7 @@ dg_entity_t *ent_sprite(int id, float scale, float x, float y);
 dg_entity_t *ent_text(int x, int y, int scale, char *text);
 dg_entity_t *ent_button(sfVector2f pos, int size, char *text
     , void (*action)(dg_window_t *));
-dg_entity_t *ent_monster(sfVector2f pos, int id, float health);
+dg_entity_t *ent_monster(sfVector2f pos, int id);
 dg_entity_t *ent_path(sfVector2f *vs);
 dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size
     , void (*action)(dg_entity_t *, dg_window_t *,
@@ -52,6 +52,7 @@ dg_component_t *cpt_game_data(void);
 dg_component_t *cpt_build_id(int id);
 dg_component_t *cpt_script(void *(*init)(void *), dg_sysf_t loop,
     void (*end)(void *), void *idata);
+dg_component_t *cpt_path_bullet(void);
 
 // systems
 void sys_render(dg_entity_t *entity, dg_window_t *w,
