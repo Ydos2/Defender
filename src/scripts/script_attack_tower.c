@@ -60,7 +60,8 @@ void *scp_tower_init(void *init_data)
     return data;
 }
 
-void attack_tower(dg_entity_t *ent, void *data, data_t *d)
+void attack_tower(dg_entity_t *ent, void *data, data_t *d,
+    dg_array_t **entities)
 {
     enemy_data_t *data_monster = NULL;
     data_t *m = NULL;
@@ -78,6 +79,7 @@ void attack_tower(dg_entity_t *ent, void *data, data_t *d)
         }
         if (d->delay >= d->delay_max && monster_detection == 1) {
             data_monster->health -= 1;
+            dg_arr_add_end(entities, ent_bullet(d->pos));
             d->delay = 0;
         } else
             d->delay += 1;
@@ -96,7 +98,7 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
 
     for (; ent_list; ent_list = ent_list->next) {
         ent = ent_list->data;
-        attack_tower(ent, data, d);
+        attack_tower(ent, data, d, entities);
     }
     if (mouse_pos.x <= (d->pos->x + 75) && mouse_pos.x >= (d->pos->x)
         && mouse_pos.y <= (d->pos->y + 75) && mouse_pos.y >= (d->pos->y))
