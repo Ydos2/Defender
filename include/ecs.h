@@ -31,6 +31,7 @@ dg_entity_t *ent_map(int id, float scale, float x, float y);
 dg_entity_t *ent_game_data(void);
 dg_entity_t *ent_tower(sfVector2f pos, int id, float *radius);
 dg_entity_t *ent_score(sfVector2f pos, int scale, char *text, int *number);
+dg_entity_t *ent_build_menu(dg_entity_t *camera, dg_scene_t *scene);
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
@@ -77,7 +78,7 @@ void sys_tower_attack(dg_entity_t *entity, dg_window_t *w,
 
 // init
 void init_img(void);
-void build_menu(dg_entity_t *entity, dg_window_t *w,
+void id(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 
 // utilities

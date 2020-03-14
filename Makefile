@@ -40,6 +40,7 @@ SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_game_data.c		\
 			src/entities/ent_tower.c			\
 			src/entities/ent_score.c			\
+			src/entities/ent_build_menu.c		\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
@@ -58,11 +59,12 @@ SRC_MNT =	src/monsters/monster_basic.c		\
 SRC_TOW =	src/towers/tower_basic.c			\
 
 SRC_INI =	src/init/init_img.c					\
-			src/init/build_menu.c				\
+			src/init/set_build_id.c				\
 
 SRC_SPT =	src/scripts/script_score.c			\
 			src/scripts/script_attack_tower.c	\
 			src/scripts/script_monster.c		\
+			src/scripts/script_build_menu.c		\
 
 SRC_LIB =	lib/get_next_line.c			\
 			lib/my_putarray.c			\

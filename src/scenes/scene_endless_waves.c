@@ -29,11 +29,11 @@ static void scene_add_ent(dg_scene_t *scene)
 {
     dg_entity_t *gd = ent_game_data();
     game_data_t *game_data = dg_entity_get_component(gd, "game_data");
+    dg_entity_t *camera = dg_ent_camera(0, 0);
 
-    dg_scene_add_ent(scene, dg_ent_camera(0, 0));
+    dg_scene_add_ent(scene, camera);
     dg_scene_add_ent(scene, ent_music("./sound/theme_game.ogg"));
-    dg_scene_add_ent(scene, ent_slot((sfVector2f){0, 0},
-        (sfVector2f){0.5, 0.5}, &build_menu));
+    dg_scene_add_ent(scene, ent_build_menu(camera, scene));
     dg_scene_add_ent(scene, ent_map(6, 1, 0, 0));
     dg_scene_add_ent(scene, ent_monster((sfVector2f) {-10, 200}, 0));
     dg_scene_add_ent(scene, ent_path(game_path()));
