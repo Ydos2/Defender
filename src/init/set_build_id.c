@@ -9,7 +9,7 @@
 #include "ecs.h"
 #include "general_data.h"
 
-void id(dg_entity_t *entity, dg_window_t *w,
+void set_build_id(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt)
 {
     dg_entity_t *ent_gd = dg_get_entity(*entities, "game_data");

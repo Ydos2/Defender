@@ -30,7 +30,7 @@ void init_build_buttons(data_t *data, dg_entity_t *entity, dg_scene_t *scene)
     data->buttons.pos = malloc(sizeof(sfVector2f) * 1);
 
     data->buttons.buttons[0] = ent_slot((sfVector2f){0, 0},
-        (sfVector2f){0.4, 0.4}, &id);
+        (sfVector2f){0.4, 0.4}, 0, 5);
     data->buttons.pos[0] = (sfVector2f){40, 0};
     data->buttons.buttons[1] = NULL;
     for (int i = 0; data->buttons.buttons[i]; i++) {
