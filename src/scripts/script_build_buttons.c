@@ -23,15 +23,16 @@ void *scp_build_buttons_init(void *init_data)
 {
     void **idata = (void **) init_data;
     data_t *data = malloc(sizeof(data_t));
-    dg_scene_t *scene = idata[0];
+    dg_scene_t *scene = (dg_scene_t *)idata[0];
     dg_entity_t *ent_gd = dg_get_entity(scene->entities, "general_data");
-    dg_entity_t *entity = idata[1];
+    dg_entity_t *entity = (dg_entity_t *)idata[1];
     sfVector2f pos = *((sfVector2f *)idata[4]);
+    dg_component_t *collider = cpt_box_collider(0, 0, 220 * 0.5, 220 * 0.5);
 
     data->pos = dg_cpt_pos(pos.x, pos.y);
     data->general_data = dg_entity_get_component(ent_gd, "general_data");
-    data->collider = cpt_box_collider(0, 0, 220 * 0.5, 220 * 0.5);
-    dg_entity_add_component(entity, data->collider);
+    data->collider = collider->data;
+    dg_entity_add_component(entity, collider);
     dg_entity_add_component(entity, data->pos);
     data->build_id = idata[2];
     data->cost = idata[3];
@@ -49,7 +50,6 @@ void scp_build_buttons_loop(dg_entity_t *entity, dg_window_t *w,
     d->collider->top = d->pos->y;
     build_buttons_update_pos(data);
     if (sfIntRect_contains(d->collider, mouse.x, mouse.y)) {
-        printf("lol\n");
     }
 }
 
