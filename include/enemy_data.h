@@ -10,11 +10,10 @@
 
 typedef struct enemy_data
 {
-    float life;
-    int damage;
-    float delay_damage;
-    int value;
-    float speed;
+    int *id;
+    sfVector2f *pos;
+    dg_entity_t *entity;
+    float *health;
 } enemy_data_t;
 
 #endif /*ENEMY_DATA_H_*/

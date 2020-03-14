@@ -35,7 +35,7 @@ static void scene_add_ent(dg_scene_t *scene)
     dg_scene_add_ent(scene, ent_slot((sfVector2f){0, 0},
         (sfVector2f){0.5, 0.5}, &build_menu));
     dg_scene_add_ent(scene, ent_map(6, 1, 0, 0));
-    dg_scene_add_ent(scene, ent_monster((sfVector2f) {-10, 200}, 0));
+    dg_scene_add_ent(scene, ent_monster((sfVector2f) {-10, 200}, 0, 100));
     dg_scene_add_ent(scene, ent_path(game_path()));
     dg_scene_add_ent(scene, gd);
     dg_scene_add_ent(scene, ent_score((sfVector2f) {1630, 0}, 80,
