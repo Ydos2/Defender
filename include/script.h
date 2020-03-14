@@ -42,6 +42,12 @@ void scp_build_menu_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_build_menu_end(void *data);
 
+//built buttons
+void *scp_build_buttons_init(void *init_data);
+void scp_build_buttons_loop(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void scp_build_buttons_end(void *data);
+
 // bullet
 void *scp_bullet_init(void *init_data);
 void scp_bullet_loop(dg_entity_t *entity, dg_window_t *w,

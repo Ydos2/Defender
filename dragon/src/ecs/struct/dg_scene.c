@@ -77,6 +77,8 @@ static void dg_destroy_asked_entities(dg_scene_t *scene)
         if (((dg_entity_t *)((*tmp)->data))->destroy) {
             removed = dg_arr_remove_at(&(scene->entities), id);
             dg_entity_destroy(removed);
+            tmp = &(scene->entities);
+            id = 0;
         }
         id++;
     }
