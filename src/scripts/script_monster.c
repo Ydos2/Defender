@@ -40,7 +40,7 @@ void scp_monster_loop(dg_entity_t *entity, dg_window_t *w,
     void *data = ((script_t *)dg_entity_get_component(entity, "script"))->data;
     enemy_data_t *d = ((enemy_data_t *)data);
 
-    if (*(d->health) <= 0)
+    if ((int)((*(d->health)) * 1000) <= 0)
         entity->destroy = 1;
 }
 
