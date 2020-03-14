@@ -5,6 +5,8 @@
 ** return the number len.
 */
 
+#include "libmy.h"
+
 int my_nblen(int nb)
 {
     int length = 0;

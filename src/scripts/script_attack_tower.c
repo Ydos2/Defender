@@ -11,12 +11,15 @@
 #include "tower_data.h"
 #include "enemy_data.h"
 #include "script.h"
+#include "epitech_tools.h"
 
 typedef struct data {
     float *radius;
     sfVector2f *pos;
     dg_entity_t *entity;
     sfCircleShape *circle;
+    int delay_max;
+    int delay;
 } data_t;
 
 sfCircleShape *create_circle(float *rad, sfVector2f *pos)
@@ -47,6 +50,8 @@ void *scp_tower_init(void *init_data)
     data->radius = (float *)idata[0];
     data->entity = (dg_entity_t *)idata[2];
     data->pos = (sfVector2f *)idata[1];
+    data->delay_max = (int)idata[3];
+    data->delay = (int)idata[4];
     data->circle = create_circle(data->radius, data->pos);
     position = dg_cpt_pos(data->pos->x, data->pos->y);
     dg_entity_add_component(data->entity, position);
@@ -55,13 +60,44 @@ void *scp_tower_init(void *init_data)
     return data;
 }
 
+void attack_tower(dg_entity_t *ent, void *data, data_t *d)
+{
+    enemy_data_t *data_monster = NULL;
+    data_t *m = NULL;
+    int monster_detection = 0;
+
+    if (!dg_strcmp(ent->name, "monster")) {
+        data_monster = ((script_t *)dg_entity_get_component
+            (ent, "script"))->data;
+        m = ((data_t *)data);
+        if (d->pos->x >= data_monster->pos->x - 250 &&
+            d->pos->x <= data_monster->pos->x + 250 &&
+            d->pos->y >= data_monster->pos->y - 200 &&
+            d->pos->y <= data_monster->pos->y + 200) {
+            monster_detection = 1;
+        }
+        if (d->delay >= d->delay_max && monster_detection == 1) {
+            data_monster->health -= 1;
+            d->delay = 0;
+        } else
+            d->delay += 1;
+    }
+}
+
 void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt)
 {
     void *data = ((script_t *)dg_entity_get_component(entity, "script"))->data;
     data_t *d = ((data_t *)data);
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(w->window);
+    dg_array_t *ent_list = *entities;
+    dg_entity_t *ent = 0;
+    int delay = 0;
 
+    for (; ent_list; ent_list = ent_list->next) {
+        ent = ent_list->data;
+        attack_tower(ent, data, d);
+    }
     if (mouse_pos.x <= (d->pos->x + 75) && mouse_pos.x >= (d->pos->x)
         && mouse_pos.y <= (d->pos->y + 75) && mouse_pos.y >= (d->pos->y))
         sfRenderWindow_drawCircleShape(w->window, d->circle, NULL);
