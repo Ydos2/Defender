@@ -25,4 +25,5 @@ void init_img(void)
     load_map_solo();
     dg_ressources_add_spritesheet("./img/tower.png", 64, 64);
     dg_ressources_add_spritesheet("./img/build_menu.png", 2000, 100);
+    dg_ressources_add_spritesheet("./img/bullet.png", 728, 515);
 }

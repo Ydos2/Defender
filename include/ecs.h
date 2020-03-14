@@ -32,6 +32,7 @@ dg_entity_t *ent_game_data(void);
 dg_entity_t *ent_tower(sfVector2f pos, int id, float *radius, int delay);
 dg_entity_t *ent_score(sfVector2f pos, int scale, char *text, int *number);
 dg_entity_t *ent_build_menu(dg_entity_t *camera, dg_scene_t *scene);
+dg_entity_t *ent_bullet(sfVector2f *pos);
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
