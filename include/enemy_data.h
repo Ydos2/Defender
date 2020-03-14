@@ -13,7 +13,7 @@ typedef struct enemy_data
     int *id;
     sfVector2f *pos;
     dg_entity_t *entity;
-    float *health;
+    float health;
 } enemy_data_t;
 
 #endif /*ENEMY_DATA_H_*/

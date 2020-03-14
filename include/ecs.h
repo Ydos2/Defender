@@ -24,7 +24,7 @@ dg_entity_t *ent_button(sfVector2f pos, int size, char *text
     , void (*action)(dg_window_t *));
 dg_entity_t *ent_monster(sfVector2f pos, int id, float health);
 dg_entity_t *ent_path(sfVector2f *vs);
-dg_entity_t *ent_slot(sfVector2f pos, sfVector2f size, int id, int price);
+dg_entity_t *ent_slot(dg_scene_t *scene,  sfVector2f pos, int id, int price);
 dg_entity_t *ent_map(int id, float scale, float x, float y);
 dg_entity_t *ent_game_data(void);
 dg_entity_t *ent_tower(sfVector2f pos, int id, float *radius, int delay);
