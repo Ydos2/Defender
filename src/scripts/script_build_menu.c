@@ -35,7 +35,6 @@ void init_build_buttons(data_t *data, dg_entity_t *entity, dg_scene_t *scene)
     for (int i = 0; data->buttons.buttons[i]; i++) {
         dg_scene_add_ent(scene, data->buttons.buttons[i]);
     }
-    return 0;
 }
 
 void build_buttons_update_pos(data_t *data)

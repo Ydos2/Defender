@@ -50,8 +50,8 @@ void *scp_tower_init(void *init_data)
     data->radius = (float *)idata[0];
     data->entity = (dg_entity_t *)idata[2];
     data->pos = (sfVector2f *)idata[1];
-    data->delay_max = (int)idata[3];
-    data->delay = (int)idata[4];
+    data->delay_max = *((int *)idata[3]);
+    data->delay = *((int *)idata[4]);
     data->circle = create_circle(data->radius, data->pos);
     position = dg_cpt_pos(data->pos->x, data->pos->y);
     dg_entity_add_component(data->entity, position);

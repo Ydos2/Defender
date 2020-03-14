@@ -31,13 +31,13 @@ static void scene_add_ent(dg_scene_t *scene)
     game_data_t *game_data = dg_entity_get_component(gd, "game_data");
     dg_entity_t *camera = dg_ent_camera(0, 0);
 
+    dg_scene_add_ent(scene, gd);
     dg_scene_add_ent(scene, camera);
     dg_scene_add_ent(scene, ent_music("./sound/theme_game.ogg"));
     dg_scene_add_ent(scene, ent_build_menu(camera, scene));
     dg_scene_add_ent(scene, ent_map(6, 1, 0, 0));
     dg_scene_add_ent(scene, ent_monster((sfVector2f) {-10, 200}, 0));
     dg_scene_add_ent(scene, ent_path(game_path()));
-    dg_scene_add_ent(scene, gd);
     dg_scene_add_ent(scene, ent_score((sfVector2f) {1630, 0}, 80,
         "money : ", &(game_data->money)));
 }
