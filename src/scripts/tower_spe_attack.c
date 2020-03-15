@@ -29,7 +29,7 @@ void arrow_attack(dg_entity_t *ent, void *data, tower_data_t *d,
             + dg_square(d->pos->y - data_monster->pos->y);
         monster_detection = (distance <= dg_square(d->radius)) ? 1 : 0;
         if (d->delay >= d->delay_max && monster_detection == 1) {
-            data_monster->health -= 25;
+            data_monster->health -= 15;
             dg_arr_add_end(entities, ent_bullet(d->pos, data_monster));
             d->delay = 0;
         }

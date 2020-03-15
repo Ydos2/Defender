@@ -26,12 +26,19 @@ void *scp_monster_init(void *init_data)
     data->pos = (sfVector2f *)idata[1];
     data->entity = (dg_entity_t *)idata[2];
     data->health = 100;
+    data->poison = 0;
+    data->slow = 0;
     position = dg_cpt_pos(data->pos->x, data->pos->y);
     dg_entity_add_component(data->entity, position);
     data->pos = (sfVector2f *)position->data;
     dg_entity_add_component(data->entity, cpt_path_follower());
     monsterCreation[id](data->entity);
     return data;
+}
+
+static void change_color(void)
+{
+
 }
 
 void scp_monster_loop(dg_entity_t *entity, dg_window_t *w,

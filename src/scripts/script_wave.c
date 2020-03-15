@@ -32,7 +32,7 @@ void scp_wave_loop(dg_entity_t *entity, dg_window_t *w,
 
     if (!monster) {
         d->gd->wave++;
-        for (int i = 0; i < d->gd->wave * 1; i++) {
+        for (int i = 0; i < d->gd->wave * 3; i++) {
             dg_arr_add_end(entities, ent_monster(
                 (sfVector2f){-10 - i * 70, 200}, 0));
         }
