@@ -14,6 +14,8 @@ typedef struct enemy_data
     sfVector2f *pos;
     dg_entity_t *entity;
     float health;
+    int poison;
+    int slow;
 } enemy_data_t;
 
 #endif /*ENEMY_DATA_H_*/

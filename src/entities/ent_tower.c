@@ -16,7 +16,7 @@ const void (*towerCreation[4])(dg_entity_t *) = {&tower_basic, &tower_basic,
 dg_entity_t *ent_tower(dg_array_t **entities, sfVector2f pos, int id, int delay)
 {
     dg_entity_t *entity = dg_entity_create("tower");
-    int delay_max = 0;
+    int delay_max = 20;
     void *idata[6] = {entities, &pos, entity, &delay, &delay_max, &id};
 
     dg_entity_add_component(entity, cpt_script(&scp_tower_init, scp_tower_loop,
