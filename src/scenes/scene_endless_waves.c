@@ -35,7 +35,7 @@ static void scene_add_ent(dg_scene_t *scene)
     dg_scene_add_ent(scene, camera);
     dg_scene_add_ent(scene, ent_music("./sound/theme_game.ogg"));
     dg_scene_add_ent(scene, ent_build_menu(camera, scene));
-    dg_scene_add_ent(scene, ent_castle((sfVector2f){1200, 100}, game_data));
+    dg_scene_add_ent(scene, ent_castle((sfVector2f){1250, 100}, game_data));
     dg_scene_add_ent(scene, ent_map(6, 1, 0, 0));
     dg_scene_add_ent(scene, ent_monster((sfVector2f) {-10, 200}, 0));
     dg_scene_add_ent(scene, ent_path(game_path()));
