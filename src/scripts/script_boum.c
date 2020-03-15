@@ -20,6 +20,7 @@ void *scp_boum_init(void *init_data)
     void **idata = (void **) init_data;
     data_t *data = malloc(sizeof(data_t));
 
+    data->delay = 0;
     return data;
 }
 
