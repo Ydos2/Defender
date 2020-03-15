@@ -81,6 +81,12 @@ void scp_castle_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_castle_end(void *data);
 
+// castle
+void *scp_boum_init(void *init_data);
+void scp_boum_loop(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void scp_boum_end(void *data);
+
 //attacks
 void arrow_attack(dg_entity_t *ent, void *data, tower_data_t *d,
     dg_array_t **entities);

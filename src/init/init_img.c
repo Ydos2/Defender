@@ -54,4 +54,5 @@ void init_img(void)
     dg_ressources_add_spritesheet("./img/castle.png", 354, 448);
     load_tower();
     load_slot();
+    dg_ressources_add_spritesheet("./img/explosion.png", 925, 833);
 }

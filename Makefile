@@ -49,6 +49,7 @@ SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_castle.c			\
 			src/entities/ent_slot_delete.c		\
 			src/entities/ent_slot_upgrade.c		\
+			src/entities/ent_bomb.c				\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
@@ -83,6 +84,7 @@ SRC_SPT =	src/scripts/script_score.c			\
 			src/scripts/script_delete_buttons.c	\
 			src/scripts/script_upgrade_buttons.c\
 			src/scripts/tower_spe_attack.c		\
+			src/scripts/script_boum.c			\
 
 SRC_LIB =	lib/get_next_line.c			\
 			lib/my_putarray.c			\

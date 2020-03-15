@@ -44,6 +44,7 @@ dg_entity_t *ent_slot_delete(dg_array_t **entities,
     sfVector2f pos, dg_entity_t *tower, int price);
 dg_entity_t *ent_slot_upgrade(dg_array_t **entities,
     sfVector2f pos, dg_entity_t *tower, tower_data_t *td);
+dg_entity_t *ent_bomb(enemy_data_t *m);
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
