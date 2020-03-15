@@ -16,16 +16,16 @@ static void spawn_tower(game_data_t *gd,
     float rad = 200;
 
     (gd->build_id == 0) ? dg_arr_add_end(entities, ent_tower(
-            (sfVector2f){mouse.x, mouse.y}, 0, &rad, 250)) : 0;
+        entities, (sfVector2f){mouse.x, mouse.y}, 0, 250)) : 0;
     (gd->build_id == 0) ? gd->money -= 5 : 0;
     (gd->build_id == 1) ? dg_arr_add_end(entities, ent_tower(
-            (sfVector2f){mouse.x, mouse.y}, 1, &rad, 250)) : 0;
+        entities, (sfVector2f){mouse.x, mouse.y}, 1, 250)) : 0;
     (gd->build_id == 1) ? gd->money -= 10 : 0;
     (gd->build_id == 2) ? dg_arr_add_end(entities, ent_tower(
-            (sfVector2f){mouse.x, mouse.y}, 2, &rad, 250)) : 0;
+        entities, (sfVector2f){mouse.x, mouse.y}, 2, 250)) : 0;
     (gd->build_id == 2) ? gd->money -= 20 : 0;
     (gd->build_id == 3) ? dg_arr_add_end(entities, ent_tower(
-            (sfVector2f){mouse.x, mouse.y}, 3, &rad, 250)) : 0;
+        entities, (sfVector2f){mouse.x, mouse.y}, 3, 250)) : 0;
     (gd->build_id == 3) ? gd->money -= 30 : 0;
 }
 

@@ -30,7 +30,7 @@ void *scp_tower_init(void *init_data);
 void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_tower_end(void *data);
-void init_tower_menu(tower_data_t *d);
+void init_tower_menu(tower_data_t *d, dg_array_t **entities);
 void launch_tower_menu(tower_data_t *d);
 
 // monster
@@ -50,6 +50,12 @@ void *scp_build_buttons_init(void *init_data);
 void scp_build_buttons_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_build_buttons_end(void *data);
+
+//built buttons
+void *scp_delete_buttons_init(void *init_data);
+void scp_delete_buttons_loop(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void scp_delete_buttons_end(void *data);
 
 // bullet
 void *scp_bullet_init(void *init_data);

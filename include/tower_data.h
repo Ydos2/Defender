@@ -10,7 +10,7 @@
 
 typedef struct tower_data
 {
-    float *radius;
+    float radius;
     sfVector2f *pos;
     dg_entity_t *entity;
     sfCircleShape *circle;
