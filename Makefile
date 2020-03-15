@@ -58,6 +58,7 @@ SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_script.c			\
 			src/systems/sys_tower_attack.c		\
 			src/systems/sys_lose.c				\
+			src/systems/sys_path_bullet.c		\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 
