@@ -10,7 +10,8 @@
 #include "ecs.h"
 #include "general_data.h"
 
-static void spawn_tower(game_data_t *gd, sfVector2i mouse, dg_array_t **entities)
+static void spawn_tower(game_data_t *gd
+    , sfVector2i mouse, dg_array_t **entities)
 {
     float rad = 200;
 
