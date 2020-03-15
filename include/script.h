@@ -54,4 +54,10 @@ void scp_bullet_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_bullet_end(void *data);
 
+// wave
+void *scp_wave_init(void *init_data);
+void scp_wave_loop(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void scp_wave_end(void *data);
+
 #endif /*SCRIPT_H_*/

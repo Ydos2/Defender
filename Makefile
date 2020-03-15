@@ -44,6 +44,8 @@ SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_score.c			\
 			src/entities/ent_build_menu.c		\
 			src/entities/ent_bullet.c			\
+			src/entities/ent_waves.c			\
+			src/entities/ent_castle.c			\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
@@ -70,6 +72,7 @@ SRC_SPT =	src/scripts/script_score.c			\
 			src/scripts/script_build_menu.c		\
 			src/scripts/script_build_buttons.c	\
 			src/scripts/script_bullet.c			\
+			src/scripts/script_wave.c			\
 
 SRC_LIB =	lib/get_next_line.c			\
 			lib/my_putarray.c			\

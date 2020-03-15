@@ -39,9 +39,13 @@ void scp_monster_loop(dg_entity_t *entity, dg_window_t *w,
 {
     void *data = ((script_t *)dg_entity_get_component(entity, "script"))->data;
     enemy_data_t *d = ((enemy_data_t *)data);
+    dg_entity_t *ent_gd = dg_get_entity(*entities, "game_data");
+    game_data_t *gd = (game_data_t *)dg_entity_get_component(ent_gd, "game_data");
 
-    if (d->health <= 0)
+    if (d->health <= 0) {
         entity->destroy = 1;
+        gd->money++;
+    }
 }
 
 void scp_monster_end(void *data)

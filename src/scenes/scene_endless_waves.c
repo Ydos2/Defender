@@ -40,6 +40,7 @@ static void scene_add_ent(dg_scene_t *scene)
     dg_scene_add_ent(scene, ent_path(game_path()));
     dg_scene_add_ent(scene, ent_score((sfVector2f) {1630, 0}, 80,
         "money : ", &(game_data->money)));
+    dg_scene_add_ent(scene, ent_wave(game_data));
 }
 
 static void scene_add_sys(dg_scene_t *scene)

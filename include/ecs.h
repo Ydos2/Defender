@@ -9,6 +9,7 @@
 #define ECS_H_
 
 #include "libdragon.h"
+#include "general_data.h"
 
 // scenes
 dg_scene_t *scene_game(void);
@@ -31,6 +32,8 @@ dg_entity_t *ent_tower(sfVector2f pos, int id, float *radius, int delay);
 dg_entity_t *ent_score(sfVector2f pos, int scale, char *text, int *number);
 dg_entity_t *ent_build_menu(dg_entity_t *camera, dg_scene_t *scene);
 dg_entity_t *ent_bullet(sfVector2f *pos);
+dg_entity_t *ent_wave(game_data_t *gd);
+dg_entity_t *ent_castle(void);
 
 // components
 dg_component_t *cpt_action(void (*action)(dg_window_t *));
