@@ -68,8 +68,13 @@ void scp_build_buttons_loop(dg_entity_t *entity, dg_window_t *w,
     d->collider->left = d->pos->x;
     d->collider->top = d->pos->y;
     if (d->cost <= d->game_data->money &&  w->events.mouse_pressed_left
-        && sfIntRect_contains(d->collider, mouse.x, mouse.y))
-        d->game_data->build_id = d->build_id;
+        && sfIntRect_contains(d->collider, mouse.x, mouse.y)) {
+        if (d->game_data->build_id != d->build_id)
+            d->game_data->build_id = d->build_id;
+        else
+            d->game_data->build_id = -1;
+        w->events.mouse_pressed_left = 0;
+    }
     set_button_color(d, mouse);
 }
 

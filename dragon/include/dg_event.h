@@ -14,6 +14,7 @@
 typedef struct dg_event
 {
     int mouse_pressed_left;
+    int mouse_pressed_right;
 } dg_event_t;
 
 #endif /*DG_EVENT_H*/

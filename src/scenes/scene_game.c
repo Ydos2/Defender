@@ -1,69 +1,72 @@
 /*
 ** EPITECH PROJECT, 2020
-** scene_menu
+** my_defender
 ** File description:
-** scene_menu
+** scene_endless_waves
 */
 
 #include <stdlib.h>
 #include "libdragon.h"
 #include "ecs.h"
+#include "general_data.h"
 
-static void change_stat(dg_entity_t *entity, dg_window_t *w,
-    dg_array_t **entities, sfTime dt)
+static sfVector2f *game_path(void)
 {
-    dg_scene_t *scene = dg_scene_manager_get_scene("game");
-    dg_component_t *sub = (dg_component_t *)
-        dg_entity_get_full_component(entity, "subentity");
-    dg_entity_t *sub_button = 0;
+    sfVector2f *path = malloc(sizeof(sfVector2f) * 8);
 
-    if (!sub)
-        return;
-    if (!(sub->data)) {
-        sub_button = ent_button((sfVector2f){200, 200}, 100, "lol", NULL);
-        sub->data = sub_button;
-        dg_arr_add_end(entities, sub_button);
-    }
-}
-
-sfVector2f *get_path(void)
-{
-    sfVector2f *path = malloc(sizeof(sfVector2f) * 5);
-
-    path[0] = (sfVector2f) {500, 500};
-    path[1] = (sfVector2f) {1000, 500};
-    path[2] = (sfVector2f) {1200, 300};
-    path[3] = (sfVector2f) {2000, 2000};
-    path[4] = (sfVector2f) {-1, -1};
+    path[0] = (sfVector2f) {0, 200};
+    path[1] = (sfVector2f) {730, 200};
+    path[2] = (sfVector2f) {750, 500};
+    path[3] = (sfVector2f) {290, 500};
+    path[4] = (sfVector2f) {290, 800};
+    path[5] = (sfVector2f) {1450, 800};
+    path[6] = (sfVector2f) {1450, 400};
+    path[7] = (sfVector2f) {-1, -1};
     return path;
 }
 
-void add_sys_scene(dg_scene_t *scene)
+static void scene_add_ent(dg_scene_t *scene)
 {
-    dg_scene_add_sys(scene, dg_system_create(&sys_tower_attack, 1));
-    dg_scene_add_sys(scene, dg_system_create(&sys_camera, 0));
+    dg_entity_t *gd = ent_game_data();
+    game_data_t *game_data = dg_entity_get_component(gd, "game_data");
+    dg_entity_t *camera = dg_ent_camera(0, 0);
+
+    dg_scene_add_ent(scene, gd);
+    dg_scene_add_ent(scene, camera);
+    dg_scene_add_ent(scene, ent_music("./sound/theme_game.ogg"));
+    dg_scene_add_ent(scene, ent_build_menu(camera, scene));
+    dg_scene_add_ent(scene, ent_castle((sfVector2f){1250, 100}, game_data));
+    dg_scene_add_ent(scene, ent_map(6, 1, 0, 0));
+    dg_scene_add_ent(scene, ent_monster((sfVector2f) {-10, 200}, 0));
+    dg_scene_add_ent(scene, ent_path(game_path()));
+    dg_scene_add_ent(scene, ent_score((sfVector2f) {1630, 0}, 80,
+        "money : ", &(game_data->money)));
+    dg_scene_add_ent(scene, ent_score((sfVector2f) {1630, 70}, 80,
+        "health : ", &(game_data->health)));
+    dg_scene_add_ent(scene, ent_wave(game_data));
+}
+
+static void scene_add_sys(dg_scene_t *scene)
+{
+    dg_scene_add_sys(scene, dg_system_create(&sys_create_tower, 0));
+    dg_scene_add_sys(scene, dg_system_create(&sys_script, 0));
+    dg_scene_add_sys(scene, dg_system_create(&sys_tower_spawn_range, 0));
     dg_scene_add_sys(scene, dg_system_create(&sys_slot, 0));
+    dg_scene_add_sys(scene, dg_system_create(&sys_display_text, 1));
     dg_scene_add_sys(scene, dg_system_create(&dg_sys_animator, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_render, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_escape, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_follow_path, 0));
-    dg_scene_add_sys(scene, dg_system_create(&sys_script, 0));
+    dg_scene_add_sys(scene, dg_system_create(&sys_lose, 0));
 }
 
 dg_scene_t *scene_game(void)
 {
     dg_scene_t *scene = dg_scene_create("game");
-    dg_scene_t *scene_escape = 0;
-    float rad = 10;
 
-    scene_escape = dg_scene_manager_get_scene("escape_menu");
-    dg_scene_add_ent(scene, dg_ent_camera(0, 0));
-    dg_scene_add_ent(scene, ent_music("./sound/theme_game.ogg"));
-    dg_scene_add_ent(scene, ent_tower
-        ((sfVector2f) {500, 500}, 0, &rad, 10));
-    dg_scene_add_ent(scene, ent_map(2, 1, 0, 0));
-    dg_scene_add_ent(scene, ent_monster((sfVector2f) {100, 100}, 0));
-    dg_scene_add_ent(scene, ent_path(get_path()));
-    add_sys_scene(scene);
+    scene_add_ent(scene);
+    scene_add_sys(scene);
+    scene->display = 1;
+    scene->run = 1;
     return scene;
 }

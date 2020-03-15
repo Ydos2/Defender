@@ -23,7 +23,8 @@ dg_window_t *dg_window_create(
     if (!window)
         return 0;
     window->id = id;
-    window->window = sfRenderWindow_create(mode, name, sfClose, NULL);
+    window->window = sfRenderWindow_create(mode, name,
+        sfClose, NULL);
     window->fb = dg_framebuffer_create(mode.width, mode.height);
     window->quit = false;
     return window;

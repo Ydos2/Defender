@@ -26,12 +26,18 @@ typedef struct data {
 
 void init_build_buttons(data_t *data, dg_entity_t *entity, dg_scene_t *scene)
 {
-    data->buttons.buttons = malloc(sizeof(dg_entity_t *) * 2);
-    data->buttons.pos = malloc(sizeof(sfVector2f) * 1);
+    data->buttons.buttons = malloc(sizeof(dg_entity_t *) * 5);
+    data->buttons.pos = malloc(sizeof(sfVector2f) * 4);
 
     data->buttons.buttons[0] = ent_slot(scene, (sfVector2f){0, 0}, 0, 5);
-    data->buttons.pos[0] = (sfVector2f){40, 0};
-    data->buttons.buttons[1] = NULL;
+    data->buttons.buttons[1] = ent_slot(scene, (sfVector2f){0, 0}, 1, 10);
+    data->buttons.buttons[2] = ent_slot(scene, (sfVector2f){0, 0}, 2, 20);
+    data->buttons.buttons[3] = ent_slot(scene, (sfVector2f){0, 0}, 3, 30);
+    data->buttons.buttons[4] = NULL;
+    data->buttons.pos[0] = (sfVector2f){400, 0};
+    data->buttons.pos[1] = (sfVector2f){700, 0};
+    data->buttons.pos[2] = (sfVector2f){1000, 0};
+    data->buttons.pos[3] = (sfVector2f){1300, 0};
     for (int i = 0; data->buttons.buttons[i]; i++) {
         dg_scene_add_ent(scene, data->buttons.buttons[i]);
     }
@@ -53,7 +59,7 @@ void *scp_build_menu_init(void *init_data)
     data_t *data = malloc(sizeof(data_t));
     dg_entity_t *entity = idata[0];
     dg_scene_t *scene = idata[2];
-    dg_component_t *pos = dg_cpt_pos(-2500, 0);
+    dg_component_t *pos = dg_cpt_pos(-2450, 0);
     dg_component_t *collider = cpt_box_collider(-1900, -10, 100, 2000);
 
     data->collider = collider->data;

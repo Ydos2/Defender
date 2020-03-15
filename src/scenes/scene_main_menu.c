@@ -21,15 +21,6 @@ static void go_to_map(dg_window_t *w)
     dg_scene_manager_remove("main_menu");
 }
 
-static void go_to_endless_wave(dg_window_t *w)
-{
-    dg_scene_t *new_scene = 0;
-
-    dg_scene_manager_add_scene(scene_endless_waves());
-    dg_scene_manager_add_scene(scene_escape_menu());
-    dg_scene_manager_remove("main_menu");
-}
-
 static void go_to_quit(dg_window_t *w)
 {
     w->quit = 1;
@@ -42,7 +33,7 @@ dg_scene_t *scene_main_menu(void)
     dg_scene_add_ent(scene, ent_button
         ((sfVector2f){350, 550}, 100, "Play", &go_to_map));
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){100, 700}, 100, "Endless Waves", &go_to_endless_wave));
+        ((sfVector2f){100, 700}, 100, "How to play", NULL));
     dg_scene_add_ent(scene, ent_button
         ((sfVector2f){350, 850}, 100, "Quit", &go_to_quit));
     dg_scene_add_ent(scene, ent_music("./sound/menu_song.ogg"));

@@ -38,7 +38,8 @@ void sys_follow_path(dg_entity_t *entity, dg_window_t *w,
         return;
     *path_id += go_to(pos, path[*path_id], 0.5, dt.microseconds);
     if (path[*path_id].x == -1 && path[*path_id].y == -1) {
+        if (!dg_strcmp(entity->name, "monster"))
+            gd->health--;
         entity->destroy = 1;
-        gd->health--;
     }
 }

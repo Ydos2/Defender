@@ -18,6 +18,6 @@ dg_entity_t *ent_slot(dg_scene_t *scene, sfVector2f pos, int id, int price)
     dg_entity_add_component(slot, cpt_scale(0.4, 0.4));
     dg_entity_add_component(slot, cpt_script(&scp_build_buttons_init,
         scp_build_buttons_loop, scp_build_buttons_end, idata));
-    dg_entity_add_component(slot, cpt_spritesheet(id + 5));
+    dg_entity_add_component(slot, cpt_spritesheet(id + 19));
     return slot;
 }

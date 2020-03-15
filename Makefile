@@ -12,7 +12,6 @@ SRC_OTH = 	src/main.c							\
 SRC_SCN =	src/scenes/scene_main_menu.c		\
 			src/scenes/scene_game.c				\
 			src/scenes/scene_escape_menu.c		\
-			src/scenes/scene_endless_waves.c	\
 
 SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_text.c			\

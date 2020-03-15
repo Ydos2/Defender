@@ -28,6 +28,9 @@ static void dg_manage_event(dg_window_t *w)
         w->events.mouse_pressed_left +=
             (event.type == sfEvtMouseButtonPressed &&
                 event.mouseButton.button == sfMouseLeft) ? 1 : 0;
+        w->events.mouse_pressed_right +=
+            (event.type == sfEvtMouseButtonPressed &&
+                event.mouseButton.button == sfMouseRight) ? 1 : 0;
     }
 }
 
