@@ -66,6 +66,7 @@ void scp_upgrade_buttons_loop(dg_entity_t *entity, dg_window_t *w,
     d->collider->top = d->pos->y;
     if (cost <= d->game_data->money && w->events.mouse_pressed_left
         && sfIntRect_contains(d->collider, mouse.x, mouse.y)) {
+        dg_entity_add_component(entity, cpt_sound("./sound/build.ogg"));
         d->game_data->money -= cost;
         d->td->id += 4;
         d->td->radius *= 1.5;

@@ -51,6 +51,7 @@ dg_scene_t *scene_lose(void)
         ((sfVector2f){1100, 700}, 100, "Menu", &go_to_menu));
     dg_scene_add_ent(scene, ent_button
         ((sfVector2f){1050, 850}, 100, "Restart", &go_to_game));
+    dg_scene_add_ent(scene, ent_music("./sound/lose.ogg"));
     dg_scene_add_ent(scene, ent_music("./sound/menu_song.ogg"));
     dg_scene_add_ent(scene, ent_sprite(0, 1, 0, 0));
     text_add_ent(scene);

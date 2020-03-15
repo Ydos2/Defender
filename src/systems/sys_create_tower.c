@@ -39,8 +39,10 @@ void sys_create_tower(dg_entity_t *entity, dg_window_t *w,
     if (!gd)
         return;
     if (w->events.mouse_pressed_left) {
-        if (gd->can_spawn_tower)
+        if (gd->can_spawn_tower) {
             spawn_tower(gd, mouse, entities);
+            dg_entity_add_component(entity, cpt_sound("./sound/build.ogg"));
+        }
         gd->build_id = -1;
     }
     gd->build_id = (w->events.mouse_pressed_right) ? -1 : gd->build_id;

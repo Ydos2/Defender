@@ -64,6 +64,7 @@ void scp_delete_buttons_loop(dg_entity_t *entity, dg_window_t *w,
         && sfIntRect_contains(d->collider, mouse.x, mouse.y)) {
         d->tower->destroy = 1;
         d->game_data->money += d->price;
+        dg_entity_add_component(entity, cpt_sound("./sound/empty.ogg"));
     }
     set_button_color(d, mouse);
 }
