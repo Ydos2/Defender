@@ -14,8 +14,8 @@ typedef struct tower_data
     sfVector2f *pos;
     dg_entity_t *entity;
     sfCircleShape *circle;
-    int delay_max;
-    int delay;
+    float delay_max;
+    float delay;
     int id;
     int stat;
     dg_entity_t *buttons[2];

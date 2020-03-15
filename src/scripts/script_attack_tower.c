@@ -41,8 +41,8 @@ void *scp_tower_init(void *init_data)
     data->radius = 200;
     data->entity = (dg_entity_t *)idata[2];
     data->pos = (sfVector2f *)idata[1];
-    data->delay_max = *((int *)idata[3]);
-    data->delay = *((int *)idata[4]);
+    data->delay_max = (float)(*((int *)idata[3]));
+    data->delay = (float)(*((int *)idata[4]));
     data->id = *((int *)idata[5]);
     data->circle = create_circle(data->radius, data->pos);
     data->sheet = cpt_spritesheet(11 + data->id);
@@ -74,14 +74,16 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(w->window);
     dg_array_t *ent_list = *entities;
     dg_entity_t *ent = 0;
-    int delay = 0;
     sfVector2f pos = {d->pos->x + d->radius * 0.225,
         d->pos->y + d->radius * 0.225};
 
+    d->delay += dt.microseconds / 4000;
     for (; ent_list; ent_list = ent_list->next) {
         ent = ent_list->data;
         attack_tower(ent, data, d, entities);
     }
+    if (d->id != 0 && d->id != 4 && d->delay > d->delay_max)
+        d->delay = 0;
     draw_circle_shape(w, d, mouse_pos);
     launch_tower_menu(d);
     sfCircleShape_destroy(d->circle);
