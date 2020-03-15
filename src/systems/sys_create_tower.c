@@ -42,5 +42,6 @@ void sys_create_tower(dg_entity_t *entity, dg_window_t *w,
             spawn_tower(gd, mouse, entities);
         gd->build_id = -1;
     }
+    gd->build_id = (w->events.mouse_pressed_right) ? -1 : gd->build_id;
     gd->can_spawn_tower = 1;
 }

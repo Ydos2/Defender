@@ -59,7 +59,7 @@ void *scp_build_menu_init(void *init_data)
     data_t *data = malloc(sizeof(data_t));
     dg_entity_t *entity = idata[0];
     dg_scene_t *scene = idata[2];
-    dg_component_t *pos = dg_cpt_pos(-2500, 0);
+    dg_component_t *pos = dg_cpt_pos(-2450, 0);
     dg_component_t *collider = cpt_box_collider(-1900, -10, 100, 2000);
 
     data->collider = collider->data;

@@ -16,12 +16,12 @@ static void load_map_solo(void)
 
 static void load_tower(void)
 {
-    dg_ressources_add_spritesheet("./img/tower.png", 64, 64);
     dg_ressources_add_spritesheet("./img/arrow_tower.png", 64, 64);
+    dg_ressources_add_spritesheet("./img/tower.png", 64, 64);
     dg_ressources_add_spritesheet("./img/blue_magic_tower.png", 64, 64);
     dg_ressources_add_spritesheet("./img/green_magic_tower.png", 64, 64);
-    dg_ressources_add_spritesheet("./img/canon_tower_2.png", 64, 64);
     dg_ressources_add_spritesheet("./img/arrow_tower_2.png", 64, 64);
+    dg_ressources_add_spritesheet("./img/canon_tower_2.png", 64, 64);
     dg_ressources_add_spritesheet("./img/blue_magic_tower_2.png", 64, 64);
     dg_ressources_add_spritesheet("./img/green_magic_tower2.png", 64, 64);
 }

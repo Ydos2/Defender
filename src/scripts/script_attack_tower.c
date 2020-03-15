@@ -20,6 +20,7 @@ typedef struct data {
     sfCircleShape *circle;
     int delay_max;
     int delay;
+    int id;
 } data_t;
 
 sfCircleShape *create_circle(float *rad, sfVector2f *pos)
@@ -52,11 +53,12 @@ void *scp_tower_init(void *init_data)
     data->pos = (sfVector2f *)idata[1];
     data->delay_max = *((int *)idata[3]);
     data->delay = *((int *)idata[4]);
+    data->id = *((int *)idata[5]);
     data->circle = create_circle(data->radius, data->pos);
     position = dg_cpt_pos(data->pos->x, data->pos->y);
     dg_entity_add_component(data->entity, position);
     data->pos = (sfVector2f *)position->data;
-    dg_entity_add_component(data->entity, cpt_spritesheet(7));
+    dg_entity_add_component(data->entity, cpt_spritesheet(11 + data->id));
     return data;
 }
 
