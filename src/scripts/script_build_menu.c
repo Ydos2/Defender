@@ -26,13 +26,13 @@ typedef struct data {
 
 void init_build_buttons(data_t *data, dg_entity_t *entity, dg_scene_t *scene)
 {
+    dg_array_t **arr = &(scene->entities);
     data->buttons.buttons = malloc(sizeof(dg_entity_t *) * 5);
     data->buttons.pos = malloc(sizeof(sfVector2f) * 4);
-
-    data->buttons.buttons[0] = ent_slot(scene, (sfVector2f){0, 0}, 0, 5);
-    data->buttons.buttons[1] = ent_slot(scene, (sfVector2f){0, 0}, 1, 10);
-    data->buttons.buttons[2] = ent_slot(scene, (sfVector2f){0, 0}, 2, 20);
-    data->buttons.buttons[3] = ent_slot(scene, (sfVector2f){0, 0}, 3, 30);
+    data->buttons.buttons[0] = ent_slot(arr, (sfVector2f){0, 0}, 0, 5);
+    data->buttons.buttons[1] = ent_slot(arr, (sfVector2f){0, 0}, 1, 10);
+    data->buttons.buttons[2] = ent_slot(arr, (sfVector2f){0, 0}, 2, 20);
+    data->buttons.buttons[3] = ent_slot(arr, (sfVector2f){0, 0}, 3, 30);
     data->buttons.buttons[4] = NULL;
     data->buttons.pos[0] = (sfVector2f){400, 0};
     data->buttons.pos[1] = (sfVector2f){700, 0};

@@ -13,22 +13,22 @@
 #include "script.h"
 #include "epitech_tools.h"
 
-sfCircleShape *create_circle(float *rad, sfVector2f *pos)
+sfCircleShape *create_circle(float rad, sfVector2f *pos)
 {
     sfCircleShape *circle = sfCircleShape_create();
     sfVector2f pos_i;
 
     if (!circle)
         return NULL;
-    pos_i.x = pos->x - *rad * 1.075;
-    pos_i.y = pos->y - *rad * 1.075;
+    pos_i.x = pos->x - rad * 1.075;
+    pos_i.y = pos->y - rad * 1.075;
     sfCircleShape_setPosition(circle, pos_i);
     sfCircleShape_setFillColor(circle, (sfColor){119, 239, 247, 25});
     sfCircleShape_setOutlineColor(circle, sfWhite);
     sfCircleShape_setOutlineThickness(circle, 1.5);
-    sfCircleShape_setRadius(circle, *rad);
-    pos->x -= *rad * 0.225;
-    pos->y -= *rad * 0.225;
+    sfCircleShape_setRadius(circle, rad);
+    pos->x -= rad * 0.225;
+    pos->y -= rad * 0.225;
     return circle;
 }
 
@@ -38,7 +38,7 @@ void *scp_tower_init(void *init_data)
     tower_data_t *data = malloc(sizeof(tower_data_t));
     dg_component_t *position = 0;
 
-    data->radius = (float *)idata[0];
+    data->radius = 200;
     data->entity = (dg_entity_t *)idata[2];
     data->pos = (sfVector2f *)idata[1];
     data->delay_max = *((int *)idata[3]);
@@ -50,7 +50,7 @@ void *scp_tower_init(void *init_data)
     data->pos = (sfVector2f *)position->data;
     dg_entity_add_component(data->entity, cpt_spritesheet(11 + data->id));
     data->stat = 0;
-    init_tower_menu(data);
+    init_tower_menu(data, (dg_array_t **)(idata[0]));
     return data;
 }
 
@@ -101,9 +101,7 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
             if (w->events.mouse_pressed_left)
                 d->stat = (d->stat) ? 0 : 1;
         }
-    if (d->stat) {
-        launch_tower_menu(d);
-    }
+    launch_tower_menu(d);
 }
 
 void scp_tower_end(void *data)
