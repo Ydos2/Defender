@@ -21,6 +21,17 @@ static void go_to_map(dg_window_t *w)
     dg_scene_manager_remove("main_menu");
 }
 
+static void go_to_how(dg_window_t *w)
+{
+    dg_scene_t *new_scene = 0;
+
+    dg_scene_manager_add_scene(scene_how_to_play());
+    new_scene = dg_scene_manager_get_scene("how_to_play");
+    new_scene->run = 1;
+    new_scene->display = 1;
+    dg_scene_manager_remove("main_menu");
+}
+
 static void go_to_quit(dg_window_t *w)
 {
     w->quit = 1;
@@ -33,7 +44,7 @@ dg_scene_t *scene_main_menu(void)
     dg_scene_add_ent(scene, ent_button
         ((sfVector2f){350, 550}, 100, "Play", &go_to_map));
     dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){100, 700}, 100, "How to play", NULL));
+        ((sfVector2f){100, 700}, 100, "How to play", &go_to_how));
     dg_scene_add_ent(scene, ent_button
         ((sfVector2f){350, 850}, 100, "Quit", &go_to_quit));
     dg_scene_add_ent(scene, ent_music("./sound/menu_song.ogg"));
