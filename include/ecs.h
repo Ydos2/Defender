@@ -12,7 +12,6 @@
 #include "general_data.h"
 #include "enemy_data.h"
 
-
 // scenes
 dg_scene_t *scene_game(void);
 dg_scene_t *scene_main_menu(void);
@@ -32,7 +31,8 @@ dg_entity_t *ent_path_bullet(sfVector2f *vs);
 dg_entity_t *ent_slot(dg_array_t **entities, sfVector2f pos, int id, int price);
 dg_entity_t *ent_map(int id, float scale, float x, float y);
 dg_entity_t *ent_game_data(void);
-dg_entity_t *ent_tower(dg_array_t **entities, sfVector2f pos, int id, int delay);
+dg_entity_t *ent_tower(dg_array_t **entities,
+    sfVector2f pos, int id, int delay);
 dg_entity_t *ent_score(sfVector2f pos, int scale, char *text, int *number);
 dg_entity_t *ent_build_menu(dg_entity_t *camera, dg_scene_t *scene);
 dg_entity_t *ent_bullet(sfVector2f *pos, enemy_data_t *m);
