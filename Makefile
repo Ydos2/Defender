@@ -47,6 +47,7 @@ SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_waves.c			\
 			src/entities/ent_castle.c			\
 			src/entities/ent_slot_delete.c		\
+			src/entities/ent_slot_upgrade.c		\
 
 SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_display_text.c		\
