@@ -19,7 +19,6 @@ static void change_stat(dg_entity_t *entity, dg_window_t *w,
 
     if (!sub)
         return;
-    //dg_scene_add_ent(scene, ent_music("./sound/click.ogg"));
     if (!(sub->data)) {
         sub_button = ent_button((sfVector2f){200, 200}, 100, "lol", NULL);
         sub->data = sub_button;
@@ -39,6 +38,18 @@ sfVector2f *get_path(void)
     return path;
 }
 
+void add_sys_scene(dg_scene_t *scene)
+{
+    dg_scene_add_sys(scene, dg_system_create(&sys_tower_attack, 1));
+    dg_scene_add_sys(scene, dg_system_create(&sys_camera, 0));
+    dg_scene_add_sys(scene, dg_system_create(&sys_slot, 0));
+    dg_scene_add_sys(scene, dg_system_create(&dg_sys_animator, 1));
+    dg_scene_add_sys(scene, dg_system_create(&sys_render, 1));
+    dg_scene_add_sys(scene, dg_system_create(&sys_escape, 1));
+    dg_scene_add_sys(scene, dg_system_create(&sys_follow_path, 0));
+    dg_scene_add_sys(scene, dg_system_create(&sys_script, 0));
+}
+
 dg_scene_t *scene_game(void)
 {
     dg_scene_t *scene = dg_scene_create("game");
@@ -53,13 +64,6 @@ dg_scene_t *scene_game(void)
     dg_scene_add_ent(scene, ent_map(2, 1, 0, 0));
     dg_scene_add_ent(scene, ent_monster((sfVector2f) {100, 100}, 0));
     dg_scene_add_ent(scene, ent_path(get_path()));
-    dg_scene_add_sys(scene, dg_system_create(&sys_tower_attack, 1));
-    dg_scene_add_sys(scene, dg_system_create(&sys_camera, 0));
-    dg_scene_add_sys(scene, dg_system_create(&sys_slot, 0));
-    dg_scene_add_sys(scene, dg_system_create(&dg_sys_animator, 1));
-    dg_scene_add_sys(scene, dg_system_create(&sys_render, 1));
-    dg_scene_add_sys(scene, dg_system_create(&sys_escape, 1));
-    dg_scene_add_sys(scene, dg_system_create(&sys_follow_path, 0));
-    dg_scene_add_sys(scene, dg_system_create(&sys_script, 0));
+    add_sys_scene(scene);
     return scene;
 }

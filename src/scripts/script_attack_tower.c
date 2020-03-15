@@ -79,7 +79,7 @@ void attack_tower(dg_entity_t *ent, void *data, data_t *d,
         }
         if (d->delay >= d->delay_max && monster_detection == 1) {
             data_monster->health -= 25;
-            dg_arr_add_end(entities, ent_bullet(d->pos));
+            dg_arr_add_end(entities, ent_bullet(d->pos, data_monster));
             d->delay = 0;
         } else
             d->delay += 1;

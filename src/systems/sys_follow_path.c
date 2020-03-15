@@ -18,7 +18,8 @@ static int go_to(sfVector2f *pos, sfVector2f target, float speed, int dt)
     pos->x += (pos->x < target.x) ? (int)(speed * dt / 2000) : 0;
     pos->y -= (pos->y > target.y) ? (int)(speed * dt / 2000) : 0;
     pos->y += (pos->y < target.y) ? (int)(speed * dt / 2000) : 0;
-    if (pos->y + 10 > target.y  && pos->y - 10 < target.y && pos->x + 10 > target.x && pos->x - 10 < target.x)
+    if (pos->y + 10 > target.y  && pos->y - 10 < target.y
+        && pos->x + 10 > target.x && pos->x - 10 < target.x)
         return 1;
     return 0;
 }

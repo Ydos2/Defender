@@ -16,12 +16,12 @@ static void component_destroy(void *data)
     free(id);
 }
 
-dg_component_t *cpt_path_bullet(void)
+dg_component_t *cpt_path_bullet_follow(void)
 {
     dg_cpt_destroy_t destroy = &component_destroy;
     int *id = malloc(sizeof(int));
     dg_component_t *component = dg_component_create(
-        "path_follower", id, destroy);
+        "path_bullet", id, destroy);
 
     *id = 0;
     return component;

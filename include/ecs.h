@@ -10,6 +10,8 @@
 
 #include "libdragon.h"
 #include "general_data.h"
+#include "enemy_data.h"
+
 
 // scenes
 dg_scene_t *scene_game(void);
@@ -25,13 +27,14 @@ dg_entity_t *ent_button(sfVector2f pos, int size, char *text
     , void (*action)(dg_window_t *));
 dg_entity_t *ent_monster(sfVector2f pos, int id);
 dg_entity_t *ent_path(sfVector2f *vs);
+dg_entity_t *ent_path_bullet(sfVector2f *vs);
 dg_entity_t *ent_slot(dg_scene_t *scene,  sfVector2f pos, int id, int price);
 dg_entity_t *ent_map(int id, float scale, float x, float y);
 dg_entity_t *ent_game_data(void);
 dg_entity_t *ent_tower(sfVector2f pos, int id, float *radius, int delay);
 dg_entity_t *ent_score(sfVector2f pos, int scale, char *text, int *number);
 dg_entity_t *ent_build_menu(dg_entity_t *camera, dg_scene_t *scene);
-dg_entity_t *ent_bullet(sfVector2f *pos);
+dg_entity_t *ent_bullet(sfVector2f *pos, enemy_data_t *m);
 dg_entity_t *ent_wave(game_data_t *gd);
 dg_entity_t *ent_castle(sfVector2f pos, game_data_t *gd);
 
@@ -53,7 +56,8 @@ dg_component_t *cpt_game_data(void);
 dg_component_t *cpt_build_id(int id);
 dg_component_t *cpt_script(void *(*init)(void *), dg_sysf_t loop,
     void (*end)(void *), void *idata);
-dg_component_t *cpt_path_bullet(void);
+dg_component_t *cpt_path_bullet_follow(void);
+dg_component_t *cpt_path_bullet(sfVector2f *vs);
 dg_component_t *cpt_color(sfColor color);
 
 // systems

@@ -81,7 +81,6 @@ void scp_build_menu_loop(dg_entity_t *entity, dg_window_t *w,
     } else {
         data->pos->x = -1900;
     }
-    
 }
 
 void scp_build_menu_end(void *data)

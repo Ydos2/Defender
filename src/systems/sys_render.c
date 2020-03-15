@@ -20,7 +20,7 @@ static sfSprite *render_sprite(sfVector2f *scale, dg_spritesheet_t *sheet,
     if (color)
         sfSprite_setColor(sprite, *color);
     dg_spritesheet_to_sprite(sheet, sprite, 0);
-    return sprite;   
+    return sprite;
 }
 
 void sys_render(dg_entity_t *entity, dg_window_t *w,

@@ -29,11 +29,12 @@ void scp_wave_loop(dg_entity_t *entity, dg_window_t *w,
     void *data = ((script_t *)dg_entity_get_component(entity, "script"))->data;
     data_t *d = ((data_t *)data);
     dg_entity_t *monster = dg_get_entity(*entities, "monster");
-    
+
     if (!monster) {
         d->gd->wave++;
         for (int i = 0; i < d->gd->wave * 4; i++) {
-            dg_arr_add_end(entities, ent_monster((sfVector2f){-10 - i * 70, 200}, 0));
+            dg_arr_add_end(entities, ent_monster(
+                (sfVector2f){-10 - i * 70, 200}, 0));
         }
     }
 }
