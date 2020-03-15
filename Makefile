@@ -29,6 +29,7 @@ SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_build_id.c		\
 			src/components/cpt_script.c			\
 			src/components/cpt_path_bullet.c	\
+			src/components/cpt_color.c			\
 
 SRC_ENT =	src/entities/ent_music.c			\
 			src/entities/ent_sprite.c			\

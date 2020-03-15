@@ -12,6 +12,7 @@
 
 typedef struct dg_spritesheet
 {
+    sfColor color;
     sfTexture *sheet;
     unsigned int x;
     unsigned int y;

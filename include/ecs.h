@@ -51,6 +51,7 @@ dg_component_t *cpt_build_id(int id);
 dg_component_t *cpt_script(void *(*init)(void *), dg_sysf_t loop,
     void (*end)(void *), void *idata);
 dg_component_t *cpt_path_bullet(void);
+dg_component_t *cpt_color(sfColor color);
 
 // systems
 void sys_render(dg_entity_t *entity, dg_window_t *w,

@@ -9,6 +9,18 @@
 #include "libdragon.h"
 #include "ecs.h"
 
+void set_color(sfColor *color, sfIntRect *rect,
+    sfVector2i mouse, dg_window_t *w)
+{
+    *color = (sfColor){255, 255, 255, 255};
+
+    if (sfIntRect_contains(rect, mouse.x, mouse.y)) {
+        *color = (sfColor){200, 200, 200, 255};
+        if (w->events.mouse_pressed_left)
+            *color = (sfColor){0, 0, 0, 255};
+    }
+}
+
 void sys_button(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt)
 {
@@ -21,12 +33,14 @@ void sys_button(dg_entity_t *entity, dg_window_t *w,
     sfIntRect *rect = (sfIntRect *)
         (dg_entity_get_component(entity, "box_collider"));
     sfVector2i mouse = sfMouse_getPositionRenderWindow(w->window);
+    sfColor *color = dg_entity_get_component(entity, "color");
 
     if (!dg_system_require(entity, 3, "box_collider", "pos", "action")
         || !camera)
         return;
     rect->left = pos->x;
     rect->top = pos->y;
+    (color) ? set_color(color, rect, mouse, w) : 0;
     if (sfIntRect_contains(rect, mouse.x, mouse.y)
         && w->events.mouse_pressed_left)
         action ? action(w) : 0;

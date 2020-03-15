@@ -20,6 +20,7 @@ dg_spritesheet_t *dg_spritesheet_create(char *filepath, int x, int y)
     spritesheet->sheet = sheet;
     spritesheet->x = x;
     spritesheet->y = y;
+    spritesheet->color = (sfColor){255, 255, 255, 255};
     return spritesheet;
 }
 

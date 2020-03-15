@@ -17,6 +17,7 @@ typedef struct data {
     int cost;
     sfVector2f *pos;
     sfIntRect *collider;
+    sfColor *color;
 } data_t;
 
 void *scp_build_buttons_init(void *init_data)
@@ -29,15 +30,32 @@ void *scp_build_buttons_init(void *init_data)
     sfVector2f pos = *((sfVector2f *)idata[4]);
     dg_component_t *collider = cpt_box_collider(0, 0, 220 * 0.5, 220 * 0.5);
     dg_component_t *cpos = dg_cpt_pos(pos.x, pos.y);
+    dg_component_t *ccolor = cpt_color((sfColor){255, 255, 255, 255});
 
     data->pos = (sfVector2f *)cpos->data;
     data->game_data = dg_entity_get_component(ent_gd, "game_data");
     data->collider = collider->data;
+    data->color = (sfColor *)ccolor->data;
     dg_entity_add_component(entity, collider);
     dg_entity_add_component(entity, cpos);
+    dg_entity_add_component(entity, ccolor);
     data->build_id = *((int *)idata[2]);
     data->cost = *((int *)idata[3]);
     return data;
+}
+
+static void set_button_color(data_t *d, sfVector2i mouse)
+{
+    *(d->color) = (sfColor){255, 255, 255, 255};
+    *(d->color) = (d->cost <= d->game_data->money
+        && sfIntRect_contains(d->collider, mouse.x, mouse.y)) ?
+        (sfColor){200, 200, 200, 255} : *(d->color);
+    *(d->color) = (d->game_data->money < d->cost) ?
+        (sfColor){255, 100, 100, 255} : *(d->color);
+    *(d->color) = (d->game_data->build_id == d->build_id) ?
+        (sfColor){230, 255, 100, 255} : *(d->color);
+    *(d->color) = (d->game_data->money < d->cost) ?
+        (sfColor){255, 100, 100, 255} : *(d->color);
 }
 
 void scp_build_buttons_loop(dg_entity_t *entity, dg_window_t *w,
@@ -49,10 +67,10 @@ void scp_build_buttons_loop(dg_entity_t *entity, dg_window_t *w,
 
     d->collider->left = d->pos->x;
     d->collider->top = d->pos->y;
-    if (w->events.mouse_pressed_left
-        && sfIntRect_contains(d->collider, mouse.x, mouse.y)) {
+    if (d->cost <= d->game_data->money &&  w->events.mouse_pressed_left
+        && sfIntRect_contains(d->collider, mouse.x, mouse.y))
         d->game_data->build_id = d->build_id;
-    }
+    set_button_color(d, mouse);
 }
 
 void scp_build_buttons_end(void *data)
