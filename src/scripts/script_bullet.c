@@ -17,13 +17,15 @@ typedef struct data {
     dg_entity_t *entity;
     enemy_data_t *m;
     sfVector2f pos_m_max;
+    int delay;
 } data_t;
 
-static sfVector2f *game_path(sfVector2f *pos)
+static sfVector2f *game_path(sfVector2f *pos, sfVector2f *pos_me)
 {
-    sfVector2f *path = malloc(sizeof(sfVector2f) * 1);
+    sfVector2f *path = malloc(sizeof(sfVector2f) * 2);
 
-    path[0] = (sfVector2f) {pos->x, pos->y};
+    path[0] = (sfVector2f) {pos_me->x, pos_me->y};
+    path[1] = (sfVector2f) {pos->x, pos->y};
     return path;
 }
 
@@ -40,11 +42,13 @@ void *scp_bullet_init(void *init_data)
     position = dg_cpt_pos(data->pos->x, data->pos->y);
     dg_entity_add_component(data->entity, position);
     data->pos = (sfVector2f *)position->data;
-    dg_scene_add_ent(scene, ent_path_bullet(game_path(data->m->pos)));
+    dg_scene_add_ent(scene, ent_path_bullet(
+        game_path(data->m->pos, data->pos)));
     dg_entity_add_component(data->entity, cpt_spritesheet(9));
     dg_entity_add_component(data->entity, cpt_path_bullet_follow());
     data->pos_m_max.x = data->pos->x;
     data->pos_m_max.y = data->pos->y;
+    data->delay = 0;
     return data;
 }
 
@@ -59,6 +63,9 @@ void scp_bullet_loop(dg_entity_t *entity, dg_window_t *w,
         d->pos->x >= d->pos_m_max.x - 25 &&
         d->pos->y <= d->pos_m_max.x + 25)
         entity->destroy = 1;
+    else if (d->delay == 10)
+        entity->destroy = 1;
+    d->delay++;
 }
 
 void scp_bullet_end(void *data)
