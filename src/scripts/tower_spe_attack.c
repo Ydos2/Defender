@@ -73,9 +73,11 @@ void blue_attack(dg_entity_t *ent, void *data, tower_data_t *d,
         distance = dg_square(d->pos->x - data_monster->pos->x)
             + dg_square(d->pos->y - data_monster->pos->y);
         monster_detection = (distance <= dg_square(d->radius)) ? 1 : 0;
-        if (d->delay >= d->delay_max && monster_detection == 1)
+        if (d->delay >= d->delay_max && monster_detection == 1) {
             data_monster->health -= 1;
             data_monster->slow = 1;
+            data_monster->slow_delay = 0;
+        }
     }
 }
 
@@ -94,8 +96,10 @@ void green_attack(dg_entity_t *ent, void *data, tower_data_t *d,
         distance = dg_square(d->pos->x - data_monster->pos->x)
             + dg_square(d->pos->y - data_monster->pos->y);
         monster_detection = (distance <= dg_square(d->radius)) ? 1 : 0;
-        if (d->delay >= d->delay_max && monster_detection == 1)
+        if (d->delay >= d->delay_max && monster_detection == 1) {
             data_monster->poison = 1;
+            data_monster->poison_delay = 0;
+        }
     }
 }
 
