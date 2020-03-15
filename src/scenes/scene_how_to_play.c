@@ -20,11 +20,6 @@ static void go_to_map(dg_window_t *w)
     dg_scene_manager_remove("how_to_play");
 }
 
-static void go_to_quit(dg_window_t *w)
-{
-    w->quit = 1;
-}
-
 void text_add_ent(dg_scene_t *scene)
 {
     dg_scene_add_ent(scene, ent_text(300, 100, 200, "TDDDDD"));
