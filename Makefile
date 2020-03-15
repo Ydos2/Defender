@@ -13,6 +13,7 @@ SRC_SCN =	src/scenes/scene_main_menu.c		\
 			src/scenes/scene_game.c				\
 			src/scenes/scene_escape_menu.c		\
 			src/scenes/scene_how_to_play.c		\
+			src/scenes/scene_lose.c				\
 
 SRC_CPT =	src/components/cpt_action.c			\
 			src/components/cpt_text.c			\
