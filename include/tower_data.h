@@ -10,10 +10,15 @@
 
 typedef struct tower_data
 {
-    int damage;
-    float delay_damage;
-    int value;
-    float speed;
+    float *radius;
+    sfVector2f *pos;
+    dg_entity_t *entity;
+    sfCircleShape *circle;
+    int delay_max;
+    int delay;
+    int id;
+    int stat;
+    dg_entity_t *buttons[2];
 } tower_data_t;
 
 #endif /* !TOWER_DATA_H_ */

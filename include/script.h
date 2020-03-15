@@ -6,6 +6,7 @@
 */
 
 #include "libdragon.h"
+#include "tower_data.h"
 
 #ifndef SCRIPT_H_
 #define SCRIPT_H_
@@ -29,6 +30,8 @@ void *scp_tower_init(void *init_data);
 void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_tower_end(void *data);
+void init_tower_menu(tower_data_t *d);
+void launch_tower_menu(tower_data_t *d);
 
 // monster
 void *scp_monster_init(void *init_data);
