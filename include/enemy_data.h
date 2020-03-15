@@ -15,7 +15,10 @@ typedef struct enemy_data
     dg_entity_t *entity;
     float health;
     int poison;
+    float poison_delay;
     int slow;
+    float slow_delay;
+    sfColor *color;
 } enemy_data_t;
 
 #endif /*ENEMY_DATA_H_*/
