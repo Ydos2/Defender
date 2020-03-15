@@ -81,6 +81,7 @@ SRC_SPT =	src/scripts/script_score.c			\
 			src/scripts/script_castle.c			\
 			src/scripts/script_tower_menu.c		\
 			src/scripts/script_delete_buttons.c	\
+			src/scripts/script_upgrade_buttons.c\
 
 SRC_LIB =	lib/get_next_line.c			\
 			lib/my_putarray.c			\

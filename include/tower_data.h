@@ -19,6 +19,7 @@ typedef struct tower_data
     int id;
     int stat;
     dg_entity_t *buttons[2];
+    dg_component_t *sheet;
 } tower_data_t;
 
 #endif /* !TOWER_DATA_H_ */

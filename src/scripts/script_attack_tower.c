@@ -45,10 +45,11 @@ void *scp_tower_init(void *init_data)
     data->delay = *((int *)idata[4]);
     data->id = *((int *)idata[5]);
     data->circle = create_circle(data->radius, data->pos);
+    data->sheet = cpt_spritesheet(11 + data->id);
     position = dg_cpt_pos(data->pos->x, data->pos->y);
     dg_entity_add_component(data->entity, position);
     data->pos = (sfVector2f *)position->data;
-    dg_entity_add_component(data->entity, cpt_spritesheet(11 + data->id));
+    dg_entity_add_component(data->entity, data->sheet);
     data->stat = 0;
     init_tower_menu(data, (dg_array_t **)(idata[0]));
     return data;
@@ -89,6 +90,8 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t *ent_list = *entities;
     dg_entity_t *ent = 0;
     int delay = 0;
+    sfVector2f pos = {d->pos->x + d->radius * 0.225,
+        d->pos->y + d->radius * 0.225};
 
     for (; ent_list; ent_list = ent_list->next) {
         ent = ent_list->data;
@@ -102,6 +105,8 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
                 d->stat = (d->stat) ? 0 : 1;
         }
     launch_tower_menu(d);
+    sfCircleShape_destroy(d->circle);
+    create_circle(d->radius, &pos);
 }
 
 void scp_tower_end(void *data)
