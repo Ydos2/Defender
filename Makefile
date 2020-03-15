@@ -74,6 +74,7 @@ SRC_SPT =	src/scripts/script_score.c			\
 			src/scripts/script_bullet.c			\
 			src/scripts/script_wave.c			\
 			src/scripts/script_castle.c			\
+			src/scripts/script_tower_menu.c		\
 
 SRC_LIB =	lib/get_next_line.c			\
 			lib/my_putarray.c			\

@@ -13,16 +13,6 @@
 #include "script.h"
 #include "epitech_tools.h"
 
-typedef struct data {
-    float *radius;
-    sfVector2f *pos;
-    dg_entity_t *entity;
-    sfCircleShape *circle;
-    int delay_max;
-    int delay;
-    int id;
-} data_t;
-
 sfCircleShape *create_circle(float *rad, sfVector2f *pos)
 {
     sfCircleShape *circle = sfCircleShape_create();
@@ -45,7 +35,7 @@ sfCircleShape *create_circle(float *rad, sfVector2f *pos)
 void *scp_tower_init(void *init_data)
 {
     void **idata = (void **) init_data;
-    data_t *data = malloc(sizeof(data_t));
+    tower_data_t *data = malloc(sizeof(tower_data_t));
     dg_component_t *position = 0;
 
     data->radius = (float *)idata[0];
@@ -59,20 +49,22 @@ void *scp_tower_init(void *init_data)
     dg_entity_add_component(data->entity, position);
     data->pos = (sfVector2f *)position->data;
     dg_entity_add_component(data->entity, cpt_spritesheet(11 + data->id));
+    data->stat = 0;
+    init_tower_menu(data);
     return data;
 }
 
-void attack_tower(dg_entity_t *ent, void *data, data_t *d,
+void attack_tower(dg_entity_t *ent, void *data, tower_data_t *d,
     dg_array_t **entities)
 {
     enemy_data_t *data_monster = NULL;
-    data_t *m = NULL;
+    tower_data_t *m = NULL;
     int monster_detection = 0;
 
     if (!dg_strcmp(ent->name, "monster")) {
         data_monster = ((script_t *)dg_entity_get_component
             (ent, "script"))->data;
-        m = ((data_t *)data);
+        m = ((tower_data_t *)data);
         if (d->pos->x >= data_monster->pos->x - 250 &&
             d->pos->x <= data_monster->pos->x + 250 &&
             d->pos->y >= data_monster->pos->y - 200 &&
@@ -92,7 +84,7 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt)
 {
     void *data = ((script_t *)dg_entity_get_component(entity, "script"))->data;
-    data_t *d = ((data_t *)data);
+    tower_data_t *d = ((tower_data_t *)data);
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(w->window);
     dg_array_t *ent_list = *entities;
     dg_entity_t *ent = 0;
@@ -102,14 +94,21 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
         ent = ent_list->data;
         attack_tower(ent, data, d, entities);
     }
-    if (mouse_pos.x <= (d->pos->x + 75) && mouse_pos.x >= (d->pos->x)
+    if ((mouse_pos.x <= (d->pos->x + 75) && mouse_pos.x >= (d->pos->x)
         && mouse_pos.y <= (d->pos->y + 75) && mouse_pos.y >= (d->pos->y))
-        sfRenderWindow_drawCircleShape(w->window, d->circle, NULL);
+        || d->stat) {
+            sfRenderWindow_drawCircleShape(w->window, d->circle, NULL);
+            if (w->events.mouse_pressed_left)
+                d->stat = (d->stat) ? 0 : 1;
+        }
+    if (d->stat) {
+        launch_tower_menu(d);
+    }
 }
 
 void scp_tower_end(void *data)
 {
-    data_t *d = (data_t *)data;
+    tower_data_t *d = (tower_data_t *)data;
 
     free(d);
 }
