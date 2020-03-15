@@ -17,7 +17,7 @@
 dg_scene_t *scene_game(void);
 dg_scene_t *scene_main_menu(void);
 dg_scene_t *scene_escape_menu(void);
-dg_scene_t *scene_endless_waves(void);
+dg_scene_t *scene_how_to_play(void);
 
 // entities
 dg_entity_t *ent_music(char *path);
