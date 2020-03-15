@@ -19,6 +19,7 @@ typedef struct game_data
     int can_spawn_tower;
     int money;
     int wave;
+    int health;
 } game_data_t;
 
 #endif /*GENERAL_DATA_H_*/

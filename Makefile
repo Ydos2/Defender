@@ -58,6 +58,7 @@ SRC_SYS =	src/systems/sys_render.c			\
 			src/systems/sys_tower_spawn_range.c	\
 			src/systems/sys_script.c			\
 			src/systems/sys_tower_attack.c		\
+			src/systems/sys_lose.c				\
 
 SRC_MNT =	src/monsters/monster_basic.c		\
 
@@ -73,6 +74,7 @@ SRC_SPT =	src/scripts/script_score.c			\
 			src/scripts/script_build_buttons.c	\
 			src/scripts/script_bullet.c			\
 			src/scripts/script_wave.c			\
+			src/scripts/script_castle.c			\
 
 SRC_LIB =	lib/get_next_line.c			\
 			lib/my_putarray.c			\

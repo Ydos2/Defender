@@ -60,4 +60,10 @@ void scp_wave_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_wave_end(void *data);
 
+// castle
+void *scp_castle_init(void *init_data);
+void scp_castle_loop(dg_entity_t *entity, dg_window_t *w,
+    dg_array_t **entities, sfTime dt);
+void scp_castle_end(void *data);
+
 #endif /*SCRIPT_H_*/

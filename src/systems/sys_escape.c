@@ -14,7 +14,7 @@ void sys_escape(dg_entity_t *entity, dg_window_t *w,
 {
     dg_scene_t *scene_escape = dg_scene_manager_get_scene("escape_menu");
     dg_scene_t *game_scene = dg_scene_manager_get_scene("game");
-    dg_entity_t *music_ent = dg_get_entity(game_scene->entities, "music");
+    dg_entity_t *music_ent = dg_get_entity(*entities, "music");
     sfMusic *music_music = dg_entity_get_component(music_ent, "sound");
 
     if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
