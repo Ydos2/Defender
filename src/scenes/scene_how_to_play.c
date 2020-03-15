@@ -25,14 +25,8 @@ static void go_to_quit(dg_window_t *w)
     w->quit = 1;
 }
 
-dg_scene_t *scene_how_to_play(void)
+void text_add_ent(dg_scene_t *scene)
 {
-    dg_scene_t *scene = dg_scene_create("how_to_play");
-
-    dg_scene_add_ent(scene, ent_button
-        ((sfVector2f){1100, 800}, 100, "Return", &go_to_map));
-    dg_scene_add_ent(scene, ent_music("./sound/menu_song.ogg"));
-    dg_scene_add_ent(scene, ent_sprite(0, 1, 0, 0));
     dg_scene_add_ent(scene, ent_text(300, 100, 200, "TDDDDD"));
     dg_scene_add_ent(scene, ent_text(100, 600, 50,
         "This game is tower defense. So you will face waves of "));
@@ -49,6 +43,17 @@ dg_scene_t *scene_how_to_play(void)
     dg_scene_add_ent(scene, ent_text(100, 900, 50,
         "The game stops if the castle reaches 0 of life."));
     dg_scene_add_ent(scene, ent_text(1100, 150, 150, "How to play"));
+}
+
+dg_scene_t *scene_how_to_play(void)
+{
+    dg_scene_t *scene = dg_scene_create("how_to_play");
+
+    dg_scene_add_ent(scene, ent_button
+        ((sfVector2f){1100, 800}, 100, "Return", &go_to_map));
+    dg_scene_add_ent(scene, ent_music("./sound/menu_song.ogg"));
+    dg_scene_add_ent(scene, ent_sprite(0, 1, 0, 0));
+    text_add_ent(scene);
     dg_scene_add_ent(scene, dg_ent_camera(0, 0));
     dg_scene_add_sys(scene, dg_system_create(&sys_display_text, 1));
     dg_scene_add_sys(scene, dg_system_create(&sys_render, 1));
