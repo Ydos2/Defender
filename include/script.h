@@ -81,4 +81,16 @@ void scp_castle_loop(dg_entity_t *entity, dg_window_t *w,
     dg_array_t **entities, sfTime dt);
 void scp_castle_end(void *data);
 
+//attacks
+void arrow_attack(dg_entity_t *ent, void *data, tower_data_t *d,
+    dg_array_t **entities);
+void canon_attack(dg_entity_t *ent, void *data, tower_data_t *d,
+    dg_array_t **entities);
+void blue_attack(dg_entity_t *ent, void *data, tower_data_t *d,
+    dg_array_t **entities);
+void green_attack(dg_entity_t *ent, void *data, tower_data_t *d,
+    dg_array_t **entities);
+void attack_tower(dg_entity_t *ent, void *data, tower_data_t *d,
+    dg_array_t **entities);
+
 #endif /*SCRIPT_H_*/

@@ -55,29 +55,14 @@ void *scp_tower_init(void *init_data)
     return data;
 }
 
-void attack_tower(dg_entity_t *ent, void *data, tower_data_t *d,
-    dg_array_t **entities)
+void draw_circle_shape(dg_window_t *w, tower_data_t *d, sfVector2i mouse_pos)
 {
-    enemy_data_t *data_monster = NULL;
-    tower_data_t *m = NULL;
-    int monster_detection = 0;
-
-    if (!dg_strcmp(ent->name, "monster")) {
-        data_monster = ((script_t *)dg_entity_get_component
-            (ent, "script"))->data;
-        m = ((tower_data_t *)data);
-        if (d->pos->x >= data_monster->pos->x - 275 &&
-            d->pos->x <= data_monster->pos->x + 275 &&
-            d->pos->y >= data_monster->pos->y - 275 &&
-            d->pos->y <= data_monster->pos->y + 275) {
-            monster_detection = 1;
-        }
-        if (d->delay >= d->delay_max - 6 && monster_detection == 1) {
-            data_monster->health -= 25;
-            dg_arr_add_end(entities, ent_bullet(d->pos, data_monster));
-            d->delay = 0;
-        } else
-            d->delay += 2;
+    if ((mouse_pos.x <= (d->pos->x + 75) && mouse_pos.x >= (d->pos->x)
+        && mouse_pos.y <= (d->pos->y + 75) && mouse_pos.y >= (d->pos->y))
+        || d->stat) {
+        sfRenderWindow_drawCircleShape(w->window, d->circle, NULL);
+        if (w->events.mouse_pressed_left)
+            d->stat = (d->stat) ? 0 : 1;
     }
 }
 
@@ -97,13 +82,7 @@ void scp_tower_loop(dg_entity_t *entity, dg_window_t *w,
         ent = ent_list->data;
         attack_tower(ent, data, d, entities);
     }
-    if ((mouse_pos.x <= (d->pos->x + 75) && mouse_pos.x >= (d->pos->x)
-        && mouse_pos.y <= (d->pos->y + 75) && mouse_pos.y >= (d->pos->y))
-        || d->stat) {
-            sfRenderWindow_drawCircleShape(w->window, d->circle, NULL);
-            if (w->events.mouse_pressed_left)
-                d->stat = (d->stat) ? 0 : 1;
-        }
+    draw_circle_shape(w, d, mouse_pos);
     launch_tower_menu(d);
     sfCircleShape_destroy(d->circle);
     create_circle(d->radius, &pos);
