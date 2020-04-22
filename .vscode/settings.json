@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "libdragon.h": "c",
-        "general_data.h": "c"
+        "general_data.h": "c",
+        "script.h": "c"
     }
 }
